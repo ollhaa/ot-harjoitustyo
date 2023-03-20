@@ -1,0 +1,114 @@
+commit 87834135f3049fd9b55403881ff99db349a817b7
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sun Mar 19 22:05:50 2023 +0200
+
+    tiedostoja päivitys
+
+ tiedostoja/file2.txt                 | 0
+ tiedostoja/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 92ddd78441bcb44ff59c2f222a9940eeec4f0ba3
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sun Mar 19 21:50:40 2023 +0200
+
+    tiedostoja ja file1, file2 ja file3
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit f5c0c42fedda4e65e4ec81381436368df79939f8
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sun Mar 19 17:32:26 2023 +0200
+
+    ekaan ja kolmanteen lisäyksiä ja poistoja
+
+ eka.txt      | 4 ++--
+ kolmas.txt   | 5 ++++-
+ tiedosto.txt | 8 --------
+ 3 files changed, 6 insertions(+), 11 deletions(-)
+
+commit 542d42d287e0357a747d7c601258208055e11820
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sun Mar 19 15:56:10 2023 +0200
+
+    eka.txt lisätty
+
+ eka.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+commit 83da8af9bbf8906080e9fb71a3331c452a5e596a
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sun Mar 19 15:53:00 2023 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 810e9ef8b4426eb69d86cd968fd28ed19a9d7eb3
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sun Mar 19 15:48:46 2023 +0200
+
+    tekstiä poistettu ja lisätty
+
+ tiedosto.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit 7cc917bbd5616324347084dac6cca6101354a582
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sun Mar 19 15:47:44 2023 +0200
+
+    tekstiä lisätty
+
+ tiedosto.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+commit f3bd0a992dbf9f25435b64007ce202a7c3078648
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sat Mar 18 23:40:23 2023 +0200
+
+    sfuffin lisäys
+
+ stuff/stuff_tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 7ed2f15c41b53456abf18a79bcdc26fba30a3c54
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sat Mar 18 23:37:34 2023 +0200
+
+    muutokset toiseen ja kolmanteen
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 84ce8b776b3768e130ee7024d0b0096a06d86d82
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sat Mar 18 23:33:23 2023 +0200
+
+    kolmannen lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2fdb0600b35d7460914e4ca8ceb58d94eeb79027
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sat Mar 18 23:30:16 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit d4ff41e92c463ccee2da727fceb8a5b356209bb0
+Author: ollhaa <olli.haapasalo@hotmail.com>
+Date:   Sat Mar 18 23:22:54 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
