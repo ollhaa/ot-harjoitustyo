@@ -1,13 +1,10 @@
-# OTSIKKO
+# Ohjelmistotekniikka, harjoitustyö
 ---
-*Tämä on esimerkkitiedosto, jossa kokeillaan markdownin ominaisuuksia*
 
-## ALAOTSIKKO
+## Tehtävät
+---
 
-**Tämä on boldattua tekstiä**
+## Viikko 1
 
-Tässä taas tavallista tekstiä
-
-1. Ensimmäinen
-2. Toinen
-3. Ja kolmas
+[gitlog.txt](https://github.com/ollhaa/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+[komentorivi.txt](https://github.com/ollhaa/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
