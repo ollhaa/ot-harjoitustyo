@@ -4,5 +4,5 @@
 
 ### Viikko 1
 
-[gitlog.txt](https://github.com/ollhaa/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt) \
-[komentorivi.txt](https://github.com/ollhaa/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+Ensimmäinen harjoitus: [gitlog.txt](https://github.com/ollhaa/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt) \
+Toinen harjoitus: [komentorivi.txt](https://github.com/ollhaa/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
