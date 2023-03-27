@@ -1,5 +1,7 @@
-### Vaatimusmäärittely
+# Vaatimusmäärittely
 ---
+*Tämä on dokumentti, jossa kuvataan lyhyesti aihe*
+
 ## Sovelluksen tarkoitus
 Sovelluksen avulla käyttäjä pystyy seuraamaan omia kuntosaliharjoituksiaan. Käyttäjä voi lisätä harjoituksen ja siellä tehdyt asiat: Liikkeet, painot, sarjat ja harjoituksen koetun raskauden.
 Käyttäjä voi seurata mm. viikkovolyymia tai etsiä ennätyspainojaan harjoitushistorian perusteella. Aluksi sovelluksessa on muutama valmis liike, mutta myöhemmin saatetaan tarjota mahdollisuus lisätä omia liikeitä sekä muokata virheellisesti kirjattuja harjoituksia.
@@ -19,13 +21,13 @@ Myöhemmin saatetaan lisätä viides näkymä, jossa on mahdollisuus muokata jo 
 
 ## Perusversion toiminnallisuudet lyhyesti
 
-# Ennen kirjautumista
+### Ennen kirjautumista
 - Käyttäjä voi käyttäjätunnuksen
 
-# Kirjatuminen
+### Kirjatuminen
 - Rekisteröitynyt käyttäjä voi kirjautua sisään sovellukseen
 
-# Kirjatumisen jälkeen
+### Kirjatumisen jälkeen
 - Käyttäjä voi lisätä oman kuntosaliharjoituksen
 - Käyttäjä voi seurata omia jo tehtyjä harjoituksiaan
 - Käyttäjä voi kirjatua ulos sovelluksesta
@@ -36,4 +38,4 @@ Perusversion jälkeen, ajan salliessa sovellusta saateteaan laajentaa esim. seur
 - Käyttäjä voi lisätä sovelluskeen valmiiden liikkeiden lisäksi omia erikoisempia liikkeitä
 - Käyttäjä voi poistaa vahingossa kirjattuja harjoituksia
 - Käyttäjä voi luoda samalla tunnuksella useamman harjoituspäiväkirjan erilaisia projekteja varten
-- 
+
