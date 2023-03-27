@@ -1,5 +1,10 @@
 # Ohjelmistotekniikka, harjoitustyö
 
+## Dokumentit
+
+[Määrittelydokumentti](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md) \
+[Tuntikirjanpito](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
 ## Tehtävät
 
 ### Viikko 1
