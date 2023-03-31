@@ -1,5 +1,5 @@
 ```mermaid
-ClassDiagram
+classDiagram
 
 
     Peli "1" --> "1" Pelilauta
