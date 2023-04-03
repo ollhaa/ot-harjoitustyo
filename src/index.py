@@ -1,3 +1,5 @@
-import cowsay
+from entities.user import User
 
-cowsay.tux("Poetry is awesome!")
+
+def main():
+    opa = User("Opa", "1234")
