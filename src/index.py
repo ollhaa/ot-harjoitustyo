@@ -1,5 +1,12 @@
-from entities.user import User
+from tkinter import Tk
 
 
 def main():
-    opa = User("Opa", "1234")
+    window = Tk()
+    window.title("Exercise diarys")
+
+    window.mainloop()
+
+
+if __name__ == "__main__":
+    main()
