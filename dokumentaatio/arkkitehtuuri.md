@@ -8,6 +8,8 @@ Sovelluksen rakenne perustuu kolmikerrosmalliin, jossa ui sisältää graaffisen
 
 Entities sisältää luokkia, kuten User ja Exercise, joista luodaan olioita. 
 
+![arkkitehtuuri_kuva](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/arkkitehtuuri_1.jpg)
+
 
 
 ## Käyttöliittymä
