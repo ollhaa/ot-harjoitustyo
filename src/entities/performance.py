@@ -6,4 +6,3 @@ class Performance:
         self.reps = reps
         self.kilograms = kilograms
         self.rpe = rpe
-        

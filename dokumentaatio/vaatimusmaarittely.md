@@ -12,8 +12,8 @@ Samaa sovellusta on mahdollisuus käyttää useamman käyttäjän omilla tunnuks
 ## Käyttöliittymäluonnos
 Sovellus koostuu aluksi mahdollisesti neljästä eri näkymästä:
 
-1.  Rekisteröityminen
-2.  Kirjautuminen
+1.  Rekisteröityminen - TEHTY
+2.  Kirjautuminen - TEHTY
 3.  Harjoituksen lisääminen
 4.  Yhteenveto tehdyistä harjoituksista
 

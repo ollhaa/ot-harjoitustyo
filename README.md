@@ -6,5 +6,5 @@ Harjoitustyö käsittelee kuntosaliharjoitusten seuraamiseen liittyvää sovellu
 
 [Määrittelydokumentti](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md) \
 [Tuntikirjanpito](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md) \
-[Changelog](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md)
+[Changelog](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md) 
 
