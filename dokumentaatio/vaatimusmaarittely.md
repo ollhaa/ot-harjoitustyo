@@ -22,10 +22,10 @@ Myöhemmin saatetaan lisätä viides näkymä, jossa on mahdollisuus muokata jo 
 ## Perusversion toiminnallisuudet lyhyesti
 
 ### Ennen kirjautumista
-- Käyttäjä voi käyttäjätunnuksen
+- Käyttäjä voi käyttäjätunnuksen - TEHTY
 
 ### Kirjatuminen
-- Rekisteröitynyt käyttäjä voi kirjautua sisään sovellukseen
+- Rekisteröitynyt käyttäjä voi kirjautua sisään sovellukseen - TEHTY
 
 ### Kirjatumisen jälkeen
 - Käyttäjä voi lisätä oman kuntosaliharjoituksen
