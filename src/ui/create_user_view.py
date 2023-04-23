@@ -34,13 +34,13 @@ class CreateUserView:
     def initialize_password_fields(self):
         password_label = ttk.Label(
             master=self.frame, text="Your new password:")
-        self.entry_password = ttk.Entry(master=self.frame)
+        self.entry_password = ttk.Entry(master=self.frame, show="*")
         password_label.grid(padx=0, pady=5)
         self.entry_password.grid(padx=5, pady=5)
 
         second_password_label = ttk.Label(
             master=self.frame, text="Again your new password:")
-        self.second_password = ttk.Entry(master=self.frame)
+        self.second_password = ttk.Entry(master=self.frame, show="*")
         second_password_label.grid(padx=0, pady=5)
         self.second_password.grid(padx=5, pady=5)
 

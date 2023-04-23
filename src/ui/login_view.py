@@ -33,7 +33,7 @@ class LoginView:
     def initialize_password_field(self):
         password_label = ttk.Label(
             master=self.frame, text="Enter your password:")
-        self.entry_password = ttk.Entry(master=self.frame)
+        self.entry_password = ttk.Entry(master=self.frame, show="*")
         password_label.grid(padx=0, pady=5)
         self.entry_password.grid(padx=5, pady=5)
 

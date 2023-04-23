@@ -35,7 +35,9 @@ class UI:
         self.hide_current_view()
 
         self.current_view = AddingExerciseView(
-            self.root
+            self.root,
+            self.show_login_view
+
 
         )
 

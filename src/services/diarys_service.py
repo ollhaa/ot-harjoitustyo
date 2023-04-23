@@ -42,5 +42,8 @@ class DiarysService:
 
         return user
 
+    def logout(self):
+        self.user = None
+
 
 diarys_service = DiarysService()
