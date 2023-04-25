@@ -26,7 +26,7 @@ class LoginView:
     def login_handler(self):
         username = self.entry_username.get()
         password = self.entry_password.get()
-        print(username)
+        #print(username)
 
         self.handle_show_adding_excercise_view()
 

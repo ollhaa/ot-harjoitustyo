@@ -12,6 +12,7 @@ cowsay = "^5.0"
 invoke = "^2.0.0"
 python-dotenv = "^1.0.0"
 ttkthemes = "^3.2.2"
+tkcalendar = "^1.6.1"
 
 
 [tool.poetry.group.dev.dependencies]
