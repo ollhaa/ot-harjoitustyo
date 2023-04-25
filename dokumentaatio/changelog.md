@@ -13,3 +13,10 @@
 - Graaffisessa käyttöliittymässä kolme näkymää
 - Testattu tietokannasta käyttäjien poistamista (lähinnä hyöty muille testeille)
 - Testattu tietokannasta hakemista nimen perusteella (hyödyllinen jatkossa)
+
+## Viikko 5
+- Salasana ei näy merkkeinä vaan tähtinä
+- Uloskirjautuminen onnistuu
+- Ulkoasua muutettu (tyyli)
+- Näkymä, jossa harjoituksia lisätään, sisältää uusia elementtejä: kalenteri, valikot ja painikenäppäimet
+- Testattu Harjoituksen luomista
