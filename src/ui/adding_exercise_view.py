@@ -1,4 +1,4 @@
-from tkinter import ttk, constants, Listbox, OptionMenu, constants, StringVar
+from tkinter import ttk, constants, Listbox, OptionMenu, constants, StringVar, Scrollbar
 from tkcalendar import Calendar, DateEntry
 from services.diarys_service import diarys_service
 
@@ -39,6 +39,9 @@ class AddingExerciseView:
         self.initialize_edit_view_button()
         self.initialize_summary_view_button()
         self.initialize_options()
+        self.initialize_other()
+        self.initialize_exercise_summary()
+        
 
         
 
@@ -60,7 +63,7 @@ class AddingExerciseView:
     def initialize_edit_view_button(self):
         edit_view_button = ttk.Button(
             master=self.frame,
-            text="Edit exercices?"
+            text="Edit older exercices?"
         )
 
         edit_view_button.grid(
@@ -74,7 +77,7 @@ class AddingExerciseView:
     def initialize_summary_view_button(self):
         summary_view_button = ttk.Button(
             master=self.frame,
-            text="See overview?"
+            text="See analytics?"
         )
 
         summary_view_button.grid(
@@ -90,13 +93,24 @@ class AddingExerciseView:
         
     def initialize_options(self):
         head_label = ttk.Label(master=self.frame, text="Choose exercise:")
-        
+        exercise_names = diarys_service.find_all_exercises("qwerty")
         listbox = Listbox(master= self.frame)  
-        listbox.insert(1,"Maastaveto")  
-        listbox.insert(2, "Penkkipunnerrus")  
-        listbox.insert(3, "Jalkakyykky")  
-        listbox.insert(4, "Leuanveto")
+        for i in range(len(exercise_names)):
+            #listbox.insert(i,"Maastaveto") 
+            listbox.insert(i, exercise_names[i])
 
+
+        head_label.grid(row=2, column=0, columnspan=2, sticky=constants.W)
+
+        listbox.grid(
+            row=3,
+            column=0,
+            padx=8,
+            pady=6
+        )
+
+
+    def initialize_other(self):
         date_label = ttk.Label(master= self.frame, text = "Choose the day:")
         self.calender = Calendar(master = self.frame, selectmode = 'day',
                year = 2023, month = 1,
@@ -125,8 +139,7 @@ class AddingExerciseView:
         
         add_exercise_button = ttk.Button(
             master=self.frame,
-            text="Add to routine"
-            
+            text="Add to routine"  
             
         )
 
@@ -135,14 +148,7 @@ class AddingExerciseView:
         
         new_excercise = ttk.Entry(master=self.frame)
        
-        head_label.grid(row=2, column=0, columnspan=2, sticky=constants.W)
-
-        listbox.grid(
-            row=3,
-            column=0,
-            padx=8,
-            pady=6
-        )
+        
 
         new_exercise_label.grid(row=4, column=0, columnspan=2)
         new_excercise.grid(row=5, column=0, columnspan=2)
@@ -150,7 +156,7 @@ class AddingExerciseView:
         add_new_exercise_button = ttk.Button(
             master=self.frame,
             text="Add to alternatives"
-            #command=lambda: self.add_to_alternatives("dippi")
+            #command=lambda: diarys_service.add_to_alternatives("dippi", "qwerty")
         )
 
         add_new_exercise_button.grid(row=6, column=0, columnspan=2)
@@ -180,5 +186,11 @@ class AddingExerciseView:
 
         rep_label.grid(row=4, column=5, columnspan=2)
         rep_menu.grid(row=5, column=5, columnspan=2)
+
+    def initialize_exercise_summary(self):
+        summary_label = ttk.Label(master=self.frame, text= "You are adding:")
+        summary_table = Scrollbar(master=self.frame)
+        summary_label.grid(row= 2, column= 12, padx= 15, columnspan=8, sticky=constants.N)
+        summary_table.grid(row=3, column=12, padx=15,columnspan=8)
 
 

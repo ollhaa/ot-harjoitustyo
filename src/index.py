@@ -1,4 +1,3 @@
-from tkinter import Tk
 from ttkthemes import ThemedTk
 from ui.ui import UI
 

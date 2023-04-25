@@ -1,7 +1,11 @@
+#general
 .pycache
+__pycache__
 .pytest_cache
 .coverage
 htmlcov
+
+#data
 database
 database.sqlite
 

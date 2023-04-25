@@ -1,10 +1,4 @@
-from user import User
-from datetime import datetime
-
-
 class Exercise:
-
-    def __init__(self, user: User):
-        self.user = user
-        self.time = datetime.now()
-        self.performances = {}
+    def __init__(self, name, username):
+        self.name = name
+        self.username = username

@@ -22,8 +22,19 @@ def create_tables(connection):
             created timestamp
         );
     ''')
+    connection.commit()
+
+    cursor.execute('''
+        create table exercises (
+            name text primary key,
+            username text
+        );
+    ''')
 
     connection.commit()
+
+#def initialize_tables(connection):
+
 
 
 def initialize_database():
