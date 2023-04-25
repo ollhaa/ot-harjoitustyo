@@ -10,14 +10,14 @@ Käyttäjä voi seurata mm. viikkovolyymia tai etsiä ennätyspainojaan harjoitu
 Samaa sovellusta on mahdollisuus käyttää useamman käyttäjän omilla tunnuksillaan. Myöhemmin voidaan lisätä joku erikoisempi toiminto, jos kirjattuja harjoituksia on yli kymmenen tms.
 
 ## Käyttöliittymäluonnos
-Sovellus koostuu aluksi mahdollisesti neljästä eri näkymästä:
+Sovellus koostuu aluksi mahdollisesti viidestä eri näkymästä:
 
 1.  Rekisteröityminen - TEHTY
 2.  Kirjautuminen - TEHTY
-3.  Harjoituksen lisääminen
-4.  Yhteenveto tehdyistä harjoituksista
+3.  Harjoituksen lisääminen -OSITTAIN TEHTY
+4.  Harjoitusten muokkaaminne
+5.  Yhteenveto tehdyistä harjoituksista
 
-Myöhemmin saatetaan lisätä viides näkymä, jossa on mahdollisuus muokata jo tehtyjä harjoituksia.
 
 ## Perusversion toiminnallisuudet lyhyesti
 
@@ -28,9 +28,9 @@ Myöhemmin saatetaan lisätä viides näkymä, jossa on mahdollisuus muokata jo 
 - Rekisteröitynyt käyttäjä voi kirjautua sisään sovellukseen - TEHTY
 
 ### Kirjatumisen jälkeen
-- Käyttäjä voi lisätä oman kuntosaliharjoituksen
+- Käyttäjä voi lisätä oman kuntosaliharjoituksen -OSITTAIN TEHTY
 - Käyttäjä voi seurata omia jo tehtyjä harjoituksiaan
-- Käyttäjä voi kirjatua ulos sovelluksesta
+- Käyttäjä voi kirjatua ulos sovelluksesta -TEHTY
 
 ## Jatkokehitysideoita
 Perusversion jälkeen, ajan salliessa sovellusta saateteaan laajentaa esim. seuraavilla toiminnoilla:
