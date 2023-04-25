@@ -17,4 +17,9 @@
 |13.4.2023  |2     | Näkymien yhteistyö tietokannan kanssa                                                                               |
 |15.4.2023  |3     | Sovelluksen varsinaisen toimintanäkymän lisääminen ja testailua erilaisilla syötteillä                              |
 |18.4.2023  |4     | Koodin siistimistä, testeihin perehtymistä ja värin vaihtaminen sovelluksessa                                       |
-|Tunnit     |39    | Yhteensä                                                                                                            |
+|21.4.2023  |2     | Harjoituksen lisäämis-näkymän laajentamista                                                                         |
+|22.4.2023  |3     | Salasanan näkyminen tähtinä kirjautuessa ja koodin siistimistä                                                      |
+|23.4.2023  |3     | Uusia painikkeita ja asettelua                                                                                      |
+|24.4.2023  |4     | Kalenterin lisäminen ja sieltä tekstikentän täyttö                                                                  |
+|25.4.2023  |4     | Testailua ja tietokantayhteyden rakentelua harjoitusten lisäämiseen ja hakemiseen                                   |
+|Tunnit     |55    | Yhteensä                                                                                                            |
