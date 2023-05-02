@@ -28,9 +28,9 @@ Sovellus koostuu aluksi mahdollisesti viidestä eri näkymästä:
 - Rekisteröitynyt käyttäjä voi kirjautua sisään sovellukseen - TEHTY
 
 ### Kirjatumisen jälkeen
-- Käyttäjä voi lisätä oman kuntosaliharjoituksen -OSITTAIN TEHTY
+- Käyttäjä voi lisätä oman kuntosaliharjoituksen - TEHTY
 - Käyttäjä voi seurata omia jo tehtyjä harjoituksiaan
-- Käyttäjä voi kirjatua ulos sovelluksesta -TEHTY
+- Käyttäjä voi kirjatua ulos sovelluksesta - TEHTY
 
 ## Jatkokehitysideoita
 Perusversion jälkeen, ajan salliessa sovellusta saateteaan laajentaa esim. seuraavilla toiminnoilla:
