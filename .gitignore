@@ -6,6 +6,6 @@ __pycache__
 htmlcov
 
 #data
-database
-database.sqlite
+database/database
+database/database.sqlite
 
