@@ -2,8 +2,17 @@ from tkinter import ttk, constants
 
 
 class LoginView:
-
+    """Käyttäjän kirjautumisnäkymä."""
     def __init__(self, root, handle_show_create_user_view, handle_show_adding_excercise_view):
+        """Luokan konstruktori. Luo uuden kirjautumisnäkymän.
+        Args:
+            root:
+                TKinter, jonka sisään näkymä alustetaan.
+            handle_show_create_user_view:
+                Kutsuttava-arvo, jota kutsutaan kun siirrytään rekisteröitymisnäkymään.
+            handle_show_adding_exercise_view:
+                Kutsuttava-arvo, jota kutsutaan kun siirrytään harjoituksenlisäämisnäkymään.
+        """
         self.root = root
         self.handle_show_create_user_view = handle_show_create_user_view
         self.handle_show_adding_excercise_view = handle_show_adding_excercise_view
@@ -14,19 +23,16 @@ class LoginView:
         self.initialize()
 
     def pack(self):
+        """"Näyttää näkymän."""
         self.frame.pack(fill=constants.X)
 
     def destroy(self):
+        """"Tuhoaa näkymän"""
         self.frame.destroy()
-
-    # def to_create_user_handler(self):
-    #    username = self.entry_username.get()
-    #    password = self.entry_password.get()
 
     def login_handler(self):
         username = self.entry_username.get()
         password = self.entry_password.get()
-        #print(username)
 
         self.handle_show_adding_excercise_view()
 
