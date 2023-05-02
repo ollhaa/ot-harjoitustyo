@@ -17,4 +17,3 @@ class Exercise:
         """
 
         return self.name
-

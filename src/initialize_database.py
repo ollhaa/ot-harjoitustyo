@@ -10,7 +10,7 @@ def drop_tables(connection):
     ''')
 
     connection.commit()
-    
+
     cursor.execute('''
         drop table if exists exercises;
         ''')
@@ -81,9 +81,6 @@ def initialize_database():
     drop_tables(connection)
     create_tables(connection)
     initialize_tables(connection)
-    
-
 
 if __name__ == "__main__":
     initialize_database()
-    

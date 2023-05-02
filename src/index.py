@@ -6,8 +6,8 @@ def main():
     window = ThemedTk(theme="black")
     window.title("Exercise diarys")
     window.geometry("1000x1000")
-    ui = UI(window)
-    ui.start()
+    ui_ = UI(window)
+    ui_.start()
     window.mainloop()
 
 if __name__ == "__main__":

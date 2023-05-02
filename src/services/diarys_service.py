@@ -34,7 +34,7 @@ class DiarysService:
             routine_repository:
                 Vapaaehtoinen, oletusarvoltaan RoutineRepository-luokan olio.
         """
-        self.user = None,
+        self.user = None
         self.user_repository = user_repository
         self.exercise_repository = exercise_repository
         self.routine_repository = routine_repository
@@ -85,12 +85,11 @@ class DiarysService:
         """
         for key, values in routine.items():
             for i in range(0, len(values[0])):
-                ex = values[0][i]
-                s = values[1][i]
-                r = values[2][i]
-                k = values[3][i]
-                self.routine_repository.add_new_routine(key, ex, s, r, k)
-                
+                exr_ = values[0][i]
+                sets_ = values[1][i]
+                reps_ = values[2][i]
+                kilos_ = values[3][i]
+                self.routine_repository.add_new_routine(key, exr_, sets_, reps_, kilos_)
 
     def login(self, username, password):
         """Kirjaa käyttäjän sisään.
