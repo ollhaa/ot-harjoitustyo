@@ -13,15 +13,15 @@ Harjoitustyö käsittelee kuntosaliharjoitusten seuraamiseen liittyvää sovellu
 
 ## Huomioita
 
-Vaatimuksina on ´Python 3.8´ tai uudempi ja ´poetry 1.2.2´ tai uudempi
+Vaatimuksina on `Python 3.8` tai uudempi ja `poetry 1.2.2` tai uudempi
 
 ## Käyttäminen
 
-Suorita `poetry install´ hakemistossa ot-harjoitustyo.
+Suorita `poetry install` hakemistossa ot-harjoitustyo.
 
-Alustustoimenpiteet ´poetry run invoke build´
+Alustustoimenpiteet `poetry run invoke build`
 
-Suorita komento ´poetry run invoke start´ hakemistossa ot-harjoitustyo.
+Suorita komento `poetry run invoke start` hakemistossa ot-harjoitustyo.
 
-Tarkemmin käyttämisestä ´Käyttöohjeessa´
+Tarkemmin käyttämisestä `Käyttöohjeessa`
 
