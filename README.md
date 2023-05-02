@@ -9,7 +9,8 @@ Harjoitustyö käsittelee kuntosaliharjoitusten seuraamiseen liittyvää sovellu
 [Changelog](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md) \
 [Käyttöohje](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/K%C3%A4ytt%C3%B6ohje.md) \
 [Arkkitehtuuri](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md) \
-[Release](https://github.com/ollhaa/ot-harjoitustyo/releases/tag/viikko5)
+[Release](https://github.com/ollhaa/ot-harjoitustyo/releases/tag/viikko5) \
+[Viikon 6 Release](https://github.com/ollhaa/ot-harjoitustyo/releases/tag/viikko6)
 
 ## Huomioita
 
