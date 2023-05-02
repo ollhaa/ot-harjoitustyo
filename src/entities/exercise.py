@@ -1,4 +1,7 @@
 class Exercise:
-    def __init__(self, name, username):
+    def __init__(self, name):
         self.name = name
-        self.username = username
+
+    def get_name(self):
+        return self.name
+

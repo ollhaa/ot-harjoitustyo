@@ -1,4 +1,5 @@
 from database_connection import get_database_connection
+from entities.exercise import Exercise
 
 
 class ExcerciseRepository:
@@ -6,15 +7,18 @@ class ExcerciseRepository:
     def __init__(self, connection):
         self.connection = connection
 
-    def find_all_exercises(self, username):
+    def find_all_exercises(self):
         cursor = self.connection.cursor()
-        rows = cursor.execute("select * from exercises where username=?", [username]).fetchall()
-        return [Excercise(row["name"]) for row in rows]
+        rows = cursor.execute("select * from exercises").fetchall()
+        print("rows: ")
+        print(rows)
+        return [Exercise(row["name"]) for row in rows]
 
-    def add_new_exercise(self, excercise_name, username):
+    def add_new_exercise(self, excercise_name):
+        exr = excercise_name
         cursor = self.connection.cursor()
-        cursor.execute("insert into exercises (name, username) values (?, ?)",
-        (excercise_name, username)
+        cursor.execute("insert into exercises values(?)",
+        (exr,)
         )
         self.connection.commit()
 
