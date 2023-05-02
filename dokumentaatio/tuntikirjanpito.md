@@ -22,4 +22,8 @@
 |23.4.2023  |3     | Uusia painikkeita ja asettelua                                                                                      |
 |24.4.2023  |4     | Kalenterin lisäminen ja sieltä tekstikentän täyttö                                                                  |
 |25.4.2023  |4     | Testailua ja tietokantayhteyden rakentelua harjoitusten lisäämiseen ja hakemiseen                                   |
-|Tunnit     |55    | Yhteensä                                                                                                            |
+|28.4.2023  |2     | Tietokantataulujen päivittämistä ja muokkaamista sovelluksen alustuksessa                                           |
+|29.4.2023  |4     | Uudet painikkeet tuleviin näkymiin ja HELP?-ikkuna yhteen näkymään                                                  |
+|1.5.2023   |4     | Harjoitusten valinnat harjoitustapahtumaan                                                                          |
+|2.5.2023   |5     | Harjoitustapahtuman tallennus tietokantaan toimii, muutama testi ja docstring                                       |
+|Tunnit     |70    | Yhteensä                                                                                                            |
