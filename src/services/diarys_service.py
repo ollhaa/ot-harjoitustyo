@@ -91,6 +91,10 @@ class DiarysService:
                 kilos_ = values[3][i]
                 self.routine_repository.add_new_routine(key, exr_, sets_, reps_, kilos_)
 
+    def find_all_routines(self):
+        routines = self.routine_repository.find_all_routines()
+        return routines
+
     def login(self, username, password):
         """Kirjaa käyttäjän sisään.
         Args:

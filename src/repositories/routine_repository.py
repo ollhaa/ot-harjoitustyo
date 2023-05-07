@@ -44,7 +44,6 @@ class RoutineRepository:
         cursor = self.connection.cursor()
         cursor.execute("select * from routines")
         rows = cursor.fetchall()
-        #return [User(row["username"], row["password"]) for row in rows]
         return rows
 
 

@@ -5,10 +5,11 @@ from services.diarys_service import diarys_service
 
 class AddingExerciseView:
 
-    def __init__(self, root, handle_logout):
+    def __init__(self, root, handle_logout, handle_analytics_view):
         self.root = root
         self.frame = None
         self.handle_logout = handle_logout
+        self.handle_analytics_view = handle_analytics_view
         self.calender = None
         self.selected_date = None
         self.new=None
@@ -31,6 +32,9 @@ class AddingExerciseView:
         diarys_service.logout()
         self.handle_logout()
 
+    def analytics_handler(self):
+        self.handle_analytics_view()
+
     def get_date(self):
         self.selected_date.config(text= self.calender.get_date())
 
@@ -48,7 +52,9 @@ class AddingExerciseView:
         help_ = self.listbox.curselection()
         selected = self.listbox.get(help_[0])
         date = str(self.selected_date.cget("text"))
-        date = datetime.strptime(date, '%d-%M-%Y').date()
+        print("date first:", str(date))
+        date = datetime.strptime(date, '%d-%m-%Y').date()
+        print("date then: ", str(date))
         sets = self.clicked.get()
         reps= self.clicked2.get()
         kg = self.kg_entry.get()
@@ -140,6 +146,7 @@ class AddingExerciseView:
             master=self.frame,
             text="ANALYTICS?",
             #background ='#A877BA'
+            command = lambda:self.analytics_handler()
         )
 
         summary_view_button.grid(

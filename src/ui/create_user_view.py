@@ -4,10 +4,11 @@ from services.diarys_service import diarys_service, UsernameExistsError
 
 class CreateUserView:
 
-    def __init__(self, root, handle_show_login_view):
+    def __init__(self, root, handle_show_login_view, handle_analytics_view):
         self.root = root
         #self.handle_create_user = handle_create_user
         self.handle_show_login_view = handle_show_login_view
+        self.handle_analytics_view = handle_analytics_view
         self.frame = None
         self.entry_username = None
         self.entry_password = None
@@ -29,7 +30,7 @@ class CreateUserView:
         second_password = self.second_password.get()
 
         diarys_service.create_user(username, password)
-        # self.handle_create_user()
+        #self.handle_create_user()
 
     def initialize_password_fields(self):
         password_label = ttk.Label(

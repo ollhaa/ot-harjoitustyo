@@ -17,6 +17,12 @@ def drop_tables(connection):
 
     connection.commit()
 
+    cursor.execute('''
+        drop table if exists routines;
+        ''')
+
+    connection.commit()
+
 
 def create_tables(connection):
     cursor = connection.cursor()
