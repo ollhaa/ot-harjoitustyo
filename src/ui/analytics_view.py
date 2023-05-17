@@ -10,33 +10,33 @@ import pandas as pd
 class AnalyticsView:
 
     def __init__(self, root, handle_logout ,handle_show_adding_excercise_view):
-        self.root = root
-        self.frame = None
-        self.handle_logout = handle_logout
-        self.handle_show_adding_excercise_view = handle_show_adding_excercise_view
+        self._root = root
+        self._frame = None
+        self._handle_logout = handle_logout
+        self._handle_show_adding_excercise_view = handle_show_adding_excercise_view
         #self.handle_show_login_view = handle_show_login_view
-        self.radio_var = 1
+        self._radio_var = 1
        
-        self.summary_days =0
-        self.summary_exercises =0
-        self.summary_total =0
+        self._summary_days =0
+        self._summary_exercises =0
+        self._summary_total =0
         
         
-        self.initialize()
+        self._initialize()
 
     def pack(self):
         # if self.frame is not None:
-        self.frame.pack(fill=constants.X)
+        self._frame.pack(fill=constants.X)
 
     def destroy(self):
         # if self.frame is not None:
-        self.frame.destroy()
+        self._frame.destroy()
 
-    def logout_handler(self):
+    def _logout_handler(self):
         diarys_service.logout()
-        self.handle_logout()
+        self._handle_logout()
 
-    def clean_data_summary(self):
+    def _clean_data_summary(self):
         routines = pd.DataFrame(diarys_service.find_all_routines())
         column_names = ["Id", "Date", "Exercise", "Sets", "Reps", "Kilos"]
         routines.columns = column_names
@@ -55,7 +55,7 @@ class AnalyticsView:
         #print(str(cur_month))
         #print(str(cur_year))
 
-        radio_var = self.radio_var.get()
+        radio_var = self._radio_var.get()
         #print(radio_var)
 
         if radio_var ==1:
@@ -68,62 +68,61 @@ class AnalyticsView:
         else:
             routines_summary = routines.copy()
 
-        self.summary_days = len(routines_summary.Date.unique())
-        self.summary_exercises = len(routines_summary.Exercise.unique())
-        self.summary_total = routines_summary.Total.sum()
-
-
-        #print(today)
-        
-        #print(routines.dtypes)
-        #print(routines)
-        #print(reenit)
+        self._summary_days = len(routines_summary.Date.unique())
+        self._summary_exercises = len(routines_summary.Exercise.unique())
+        self._summary_total = routines_summary.Total.sum()
 
         labels = routines_summary.Exercise.unique().tolist()
 
-        print(labels)
-        print(len(labels))
         sizes = routines_summary.groupby(['Exercise']).sum()
         sizes = sizes.Total.tolist()
-        print(sizes)
-
-        #labels= ['a','v','c','t']
-        #sizes = [15, 30, 45, 10]
 
         figure = plt.Figure(figsize=(3,3), dpi=100)
         plt.pie(sizes, labels=labels)
+        
+
+        self._initialize_other()
         plt.show()
 
-        self.initialize_other()
+    def _open_popup(self):
+        top= Toplevel(self._frame)
+        top.geometry("550x155")
+        top.resizable(0, 0)
+        top.title("Help: See stats")
+        ttk.Label(top, text= 
+        "Select from leftside one of the following:\n"
+            "\t*Today \n"
+            "\t*This Month \n"
+            "\t*This Year \n"
+            "\t*All \n"
+        "\n"
+        "Then press 'Get stats'. You can also go Adding exercices ('ADD?) or to other frames. \n"
+        "\n"
+        "If you want to logout then press 'LOGOUT?" 
+        ).place(x=0,y=0)
 
-    def open_popup(self):
-        top= Toplevel(self.frame)
-        top.geometry("500x500")
-        top.title("Help: Adding exercise")
-        ttk.Label(top, text= "Hello World!").place(x=150,y=80)
+    def _adding_view_handler(self):
+        self._handle_show_adding_excercise_view()
 
-    def adding_view_handler(self):
-        self.handle_show_adding_excercise_view()
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+        self._initialize_logout_button()
+        self._initialize_edit_view_button()
+        self._initialize_help_button()
+        self._initialize_adding_exercise_view_button()
+        self._initialize_options()
 
-    def initialize(self):
-        self.frame = ttk.Frame(master=self.root)
-        self.initialize_logout_button()
-        self.initialize_edit_view_button()
-        self.initialize_help_button()
-        self.initialize_adding_exercise_view_button()
-        self.initialize_options()
-
-        self.initialize_other()
+        self._initialize_other()
         
 
 
 
-    def initialize_logout_button(self):
+    def _initialize_logout_button(self):
         logout_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="LOGOUT?",
             #bg ="red",
-            command = self.logout_handler
+            command = self._logout_handler
         )
 
         logout_button.grid(
@@ -134,9 +133,9 @@ class AnalyticsView:
             sticky=constants.EW
         )
 
-    def initialize_edit_view_button(self):
+    def _initialize_edit_view_button(self):
         edit_view_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="EDIT?",
             #bg ="red"
         )
@@ -150,12 +149,12 @@ class AnalyticsView:
             sticky=constants.EW
         )
 
-    def initialize_adding_exercise_view_button(self):
+    def _initialize_adding_exercise_view_button(self):
         summary_view_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="ADD?",
             #background ='#A877BA'
-            command = lambda:self.adding_view_handler()
+            command = lambda:self._adding_view_handler()
         )
 
         summary_view_button.grid(
@@ -167,11 +166,11 @@ class AnalyticsView:
             sticky=constants.EW
         )
     
-    def initialize_help_button(self):
+    def _initialize_help_button(self):
         help_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="HELP?",
-            command= lambda:self.open_popup()
+            command= lambda:self._open_popup()
             #background ='#A877BA'
         )
 
@@ -184,23 +183,23 @@ class AnalyticsView:
             sticky=constants.EW
         )
 
-    def initialize_options(self):
-        days = ttk.Label(master = self.frame, text = "Select one")
+    def _initialize_options(self):
+        days = ttk.Label(master = self._frame, text = "Select one")
         days.grid(row= 1, column =0, pady=10)
 
         options = [('Today',1), ('This Month', 2),('This Year', 3), ('All', 4)]
-        self.radio_var = IntVar()
+        self._radio_var = IntVar()
         i =0
         for text, value in options:
-            Radiobutton(master=self.frame, text=text, value=value, variable=self.radio_var).grid(row=2+i, column=0, padx=10, pady=10, sticky = constants.W)
+            Radiobutton(master=self._frame, text=text, value=value, variable=self._radio_var).grid(row=2+i, column=0, padx=10, pady=10, sticky = constants.W)
             i+=1
         
-        #self.radio_var.set(1)
+        self._radio_var.set(1)
 
         bar_chart_button =ttk.Button(
-            master= self.frame,
+            master= self._frame,
             text="Get stats",
-            command = lambda:self.clean_data_summary()
+            command = lambda:self._clean_data_summary()
         )
         bar_chart_button.grid(
             row= 6,
@@ -209,34 +208,34 @@ class AnalyticsView:
             sticky = constants.EW
         )
 
-    def initialize_other(self):
+    def _initialize_other(self):
         label_routines_days = ttk.Label(
-            master=self.frame,
-            text = str(self.summary_days)
+            master=self._frame,
+            text = str(self._summary_days)
         )  
 
         label_routines_exercises = ttk.Label(
-            master=self.frame,
-            text = str(self.summary_exercises)
+            master=self._frame,
+            text = str(self._summary_exercises)
         )    
 
         label_routines_total = ttk.Label(
-            master=self.frame,
-            text= str(self.summary_total)
+            master=self._frame,
+            text= str(self._summary_total)
         )
 
         label_routines_days_label = ttk.Label(
-            master=self.frame,
+            master=self._frame,
             text = "No. of training days"
         )  
 
         label_routines_exercises_label = ttk.Label(
-            master=self.frame,
+            master=self._frame,
             text = "No. of different exercises"
         )    
 
         label_routines_total_label = ttk.Label(
-            master=self.frame,
+            master=self._frame,
             text= "Total lifted weighs"
         )
 

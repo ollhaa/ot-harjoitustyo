@@ -11,7 +11,7 @@ class ExcerciseRepository:
         Args:
             connection: Tietokantayhteyden Connection-luokan olio
         """
-        self.connection = connection
+        self._connection = connection
 
     def find_all_exercises(self):
         """Palauttaa kaikki harjoitukset tietokannasta.
@@ -19,7 +19,7 @@ class ExcerciseRepository:
         Returns:
             Palauttaa listan Exercise-luokan olioita.
         """
-        cursor = self.connection.cursor()
+        cursor = self._connection.cursor()
         rows = cursor.execute("select * from exercises").fetchall()
         return [Exercise(row["name"]) for row in rows]
 
@@ -30,19 +30,19 @@ class ExcerciseRepository:
             excercise_name: Tallennettavan harjoituksen nimi.
         """
         exr = excercise_name
-        cursor = self.connection.cursor()
+        cursor = self._connection.cursor()
         cursor.execute("insert into exercises values(?)",
         (exr,)
         )
-        self.connection.commit()
+        self._connection.commit()
 
     def delete_all_excercises(self):
         """Poistaa kaikki harjoitukset tietokannasta.
         """
-        cursor = self.connection.cursor()
+        cursor = self._connection.cursor()
         cursor.execute("delete from exercises")
 
-        self.connection.commit()
+        self._connection.commit()
 
 
 exercise_repository = ExcerciseRepository(get_database_connection())

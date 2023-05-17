@@ -8,7 +8,7 @@ class RoutineRepository:
         Args:
             connection: Tietokantayhteyden Connection-luokan olio
         """
-        self.connection = connection
+        self._connection = connection
 
     def add_new_routine(self, date, exr, sets, reps, kilos):
         """Tallentaa  uuden harjoitustapahtuman tietokantaan.
@@ -21,19 +21,19 @@ class RoutineRepository:
             kilos: Harjoituskerran kilos
 
         """
-        cursor = self.connection.cursor()
+        cursor = self._connection.cursor()
         cursor.execute("insert into routines (date, exercise, sets, reps, kilos) values(?,?,?,?,?)",
         (date,exr, sets, reps, kilos,)
         )
-        self.connection.commit()
+        self._connection.commit()
 
     def delete_all_routines(self):
         """Poistaa kaikki harjoitustapahtumat tietokannasta.
         """
-        cursor = self.connection.cursor()
+        cursor = self._connection.cursor()
         cursor.execute("delete from routines")
 
-        self.connection.commit()
+        self._connection.commit()
 
     def find_all_routines(self):
         """Palauttaa kaikki harjoitustapahtumat tietokannasta.
@@ -41,7 +41,7 @@ class RoutineRepository:
         Returns:
             Palauttaa listan.
         """
-        cursor = self.connection.cursor()
+        cursor = self._connection.cursor()
         cursor.execute("select * from routines")
         rows = cursor.fetchall()
         return rows

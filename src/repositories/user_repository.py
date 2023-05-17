@@ -14,7 +14,7 @@ class UserRepository:
         Args:
             connection: Tietokantayhteyden Connection-luokan olio
         """
-        self.connection = connection
+        self._connection = connection
 
     def create(self, user):
         """Tallentaa  uuden käyttäjän tietokantaan.
@@ -24,21 +24,27 @@ class UserRepository:
         Returns:
             Tallennettu käyttäjän User-luokan oliona.
         """
-        cursor = self.connection.cursor()
-        cursor.execute(
-            "insert or ignore into users (username, password, created) values (?, ?, ?)",
-            (user.username, user.password, user.created)
-        )
-        self.connection.commit()
-        return user
+        name = user.username
+        password = user.password
+        time = user.created
+        if self.find_by_username(name) is None:
+            cursor = self._connection.cursor()
+            cursor.execute(
+                "insert or ignore into users (username, password, created) values (?, ?, ?)",
+                (name, password, time)
+            )
+            self._connection.commit()
+            return True
+        
+        raise ValueError
 
     def delete_all_users(self):
         """Poistaa kaikki käyttäjät tietokannasta.
         """
-        cursor = self.connection.cursor()
+        cursor = self._connection.cursor()
         cursor.execute("delete from users")
 
-        self.connection.commit()
+        self._connection.commit()
 
     def find_by_username(self, username):
         """Etsii käyttäjän käyttäjätiedot tietokannasta.
@@ -46,14 +52,15 @@ class UserRepository:
         Args: 
             username: Etsittävän käyttäjän nimi
         """
-        cursor = self.connection.cursor()
+        cursor = self._connection.cursor()
         cursor.execute(
             "select * from users where username = ?",
             (username,))
 
         founded = cursor.fetchone()
+        print(founded)
 
-        return get_user_by_row(founded)
+        return User(founded["username"], founded["password"]) if founded else None
 
     def find_all_users(self):
         """Palauttaa kaikki käyttäjät tietokannasta.
@@ -61,7 +68,7 @@ class UserRepository:
         Returns:
             Palauttaa listan User-luokan olioita.
         """
-        cursor = self.connection.cursor()
+        cursor = self._connection.cursor()
         cursor.execute("select * from users")
         rows = cursor.fetchall()
         return [User(row["username"], row["password"]) for row in rows]

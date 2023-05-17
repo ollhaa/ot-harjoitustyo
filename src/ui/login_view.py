@@ -1,5 +1,5 @@
-from tkinter import ttk, constants
-
+from tkinter import ttk, constants, StringVar
+from services.diarys_service import diarys_service, InvalidCredentialsError
 
 class LoginView:
     """Käyttäjän kirjautumisnäkymä."""
@@ -13,65 +13,90 @@ class LoginView:
             handle_show_adding_exercise_view:
                 Kutsuttava-arvo, jota kutsutaan kun siirrytään harjoituksenlisäämisnäkymään.
         """
-        self.root = root
-        self.handle_show_create_user_view = handle_show_create_user_view
-        self.handle_show_adding_excercise_view = handle_show_adding_excercise_view
-        self.frame = None
-        self.entry_username = None
-        self.entry_password = None
+        self._root = root
+        self._handle_show_create_user_view = handle_show_create_user_view
+        self._handle_show_adding_excercise_view = handle_show_adding_excercise_view
+        self._frame = None
+        self._entry_username = None
+        self._entry_password = None
 
-        self.initialize()
+        self._error_variable = None
+        self._error_label = None
+
+        self._initialize()
 
     def pack(self):
         """"Näyttää näkymän."""
-        self.frame.pack(fill=constants.X)
+        self._frame.pack(fill=constants.X)
 
     def destroy(self):
         """"Tuhoaa näkymän"""
-        self.frame.destroy()
+        self._frame.destroy()
 
-    def login_handler(self):
-        username = self.entry_username.get()
-        password = self.entry_password.get()
+    def _login_handler(self):
+        username = self._entry_username.get()
+        password = self._entry_password.get()
 
-        self.handle_show_adding_excercise_view()
+        try:
+            diarys_service.login(username, password)
+            self._handle_show_adding_excercise_view()
+        except ValueError:
+            self._show_error("Invalid username or password")
 
-    def initialize_password_field(self):
+        
+
+    def _show_error(self, message):
+        self._error_variable.set(message)
+        self._error_label.grid()
+
+    def _hide_error(self):
+        self._error_label.grid_remove()
+
+    def _initialize_password_field(self):
         password_label = ttk.Label(
-            master=self.frame, text="Enter your password:")
-        self.entry_password = ttk.Entry(master=self.frame, show="*")
+            master=self._frame, text="Enter your password:")
+        self._entry_password = ttk.Entry(master=self._frame, show="*")
         password_label.grid(padx=0, pady=5)
-        self.entry_password.grid(padx=5, pady=5)
+        self._entry_password.grid(padx=5, pady=5)
 
-    def initialize_username_field(self):
+    def _initialize_username_field(self):
         username_label = ttk.Label(
-            master=self.frame, text="Enter your username:")
-        self.entry_username = ttk.Entry(master=self.frame)
+            master=self._frame, text="Enter your username:")
+        self._entry_username = ttk.Entry(master=self._frame)
         username_label.grid(padx=10, pady=10)
-        self.entry_username.grid(padx=10, pady=10)
+        self._entry_username.grid(padx=10, pady=10)
 
-    def initialize_heading(self):
-        heading_label = ttk.Label(master=self.frame, text="LOG IN")
+    def _initialize_heading(self):
+        heading_label = ttk.Label(master=self._frame, text="LOG IN")
         heading_label.grid(row=0, column=0, columnspan=1, sticky=constants.EW)
 
-    def initialize(self):
-        self.frame = ttk.Frame(master=self.root)
-        self.initialize_heading()
-        self.initialize_username_field()
-        self.initialize_password_field()
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._frame)
+        self._error_variable = StringVar(self._frame)
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
+            foreground="red"
+        )
+        self._initialize_heading()
+        self._initialize_username_field()
+        self._initialize_password_field()
 
         to_create_user_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="I do not have an account yet",
-            command=self.handle_show_create_user_view
+            command=self._handle_show_create_user_view
         )
 
         login_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="Log In",
-            command=self.login_handler
+            command=self._login_handler
         )
 
+        self._error_label.grid(padx=5, pady=5)
         login_button.grid(padx=5, pady=5, sticky=constants.EW)
 
         to_create_user_button.grid(padx=5, pady=5, sticky=constants.EW)
+
+        self._hide_error()
