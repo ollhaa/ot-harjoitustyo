@@ -99,6 +99,9 @@ class DiarysService:
         routines = self._routine_repository.find_all_routines()
         return routines
 
+    def delete_routine_by_id(self, id):
+        self._routine_repository.delete_routine_by_id(id)
+
     def login(self, username, password):
         """Kirjaa käyttäjän sisään.
         Args:

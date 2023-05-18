@@ -9,11 +9,12 @@ import pandas as pd
 
 class AnalyticsView:
 
-    def __init__(self, root, handle_logout ,handle_show_adding_excercise_view):
+    def __init__(self, root, handle_logout ,handle_show_adding_excercise_view, handle_show_edit_view):
         self._root = root
         self._frame = None
         self._handle_logout = handle_logout
         self._handle_show_adding_excercise_view = handle_show_adding_excercise_view
+        self._handle_show_edit_view = handle_show_edit_view
         #self.handle_show_login_view = handle_show_login_view
         self._radio_var = 1
        
@@ -35,6 +36,7 @@ class AnalyticsView:
     def _logout_handler(self):
         diarys_service.logout()
         self._handle_logout()
+
 
     def _clean_data_summary(self):
         routines = pd.DataFrame(diarys_service.find_all_routines())
@@ -104,6 +106,9 @@ class AnalyticsView:
     def _adding_view_handler(self):
         self._handle_show_adding_excercise_view()
 
+    def _edit_view_handler(self):
+        self._handle_show_edit_view()
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         self._initialize_logout_button()
@@ -138,6 +143,7 @@ class AnalyticsView:
             master=self._frame,
             text="EDIT?",
             #bg ="red"
+            command=self._edit_view_handler
         )
 
         edit_view_button.grid(

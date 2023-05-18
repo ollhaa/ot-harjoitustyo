@@ -35,6 +35,13 @@ class RoutineRepository:
 
         self._connection.commit()
 
+    def delete_routine_by_id(self, id):
+        cursor = self._connection.cursor()
+        cursor.execute("delete from routines where id==?",[id])
+        self._connection.commit()
+
+
+
     def find_all_routines(self):
         """Palauttaa kaikki harjoitustapahtumat tietokannasta.
 
