@@ -44,7 +44,12 @@ class AddingExerciseView:
         new = self._new.get()
         if new is not None:
             alt = new.lower()
-            diarys_service.add_new_exercise(alt)
+            exists_alt = diarys_service.find_all_exercises()
+            print(exists_alt)
+            exists_alt = [x.name for x in exists_alt]
+            print(exists_alt)
+            if alt not in exists_alt:
+                diarys_service.add_new_exercise(alt)
         self._new = None
         self._initialize_options()
 

@@ -13,26 +13,27 @@ class ExcerciseRepository:
         """
         self._connection = connection
 
-    def find_all_exercises(self):
+    def find_all_exercises(self, username):
         """Palauttaa kaikki harjoitukset tietokannasta.
 
         Returns:
             Palauttaa listan Exercise-luokan olioita.
         """
         cursor = self._connection.cursor()
-        rows = cursor.execute("select * from exercises").fetchall()
+        rows = cursor.execute("select * from exercises where username ==?", [username]).fetchall()
         return [Exercise(row["name"]) for row in rows]
 
-    def add_new_exercise(self, excercise_name):
+    def add_new_exercise(self, excercise_name, username):
         """Tallentaa  uuden harjoituksen tietokantaan.
 
         Args:
             excercise_name: Tallennettavan harjoituksen nimi.
         """
         exr = excercise_name
+        username= username
         cursor = self._connection.cursor()
-        cursor.execute("insert into exercises values(?)",
-        (exr,)
+        cursor.execute("insert into exercises (name, username) values(?,?)",
+        (exr, username,)
         )
         self._connection.commit()
 

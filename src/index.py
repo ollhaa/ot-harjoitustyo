@@ -3,7 +3,7 @@ from ui.ui import UI
 
 
 def main():
-    window = ThemedTk(theme="black")
+    window = ThemedTk(theme="black", background=True)
     window.title("Exercise diarys")
     window.geometry("1000x1000")
     ui_ = UI(window)

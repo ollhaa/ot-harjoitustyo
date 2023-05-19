@@ -29,7 +29,8 @@ def create_tables(connection):
 
     cursor.execute('''
         create table users (
-            username text primary key,
+            id integer primary key,
+            username text,
             password text,
             created timestamp
         );
@@ -38,7 +39,9 @@ def create_tables(connection):
 
     cursor.execute('''
         create table exercises (
-            name text primary key
+            id integer primary key,
+            name text,
+            username text
         );
     ''')
 
@@ -47,6 +50,7 @@ def create_tables(connection):
     cursor.execute('''
         create table routines (
             id integer primary key,
+            username,
             date date,
             exercise text,
             sets integer,
@@ -60,23 +64,30 @@ def create_tables(connection):
 
 def initialize_tables(connection):
     cursor = connection.cursor()
+
+    cursor.execute('''
+        insert into users
+            (username, password) values ('qwerty', '1234')
+        
+        ''')
+
     cursor.execute('''
         insert into exercises
-            (name) values ('deadlift')
+            (name, username) values ('deadlift', 'qwerty')
         
         ''')
     connection.commit()
 
     cursor.execute('''
         insert into exercises
-            (name) values ('bench press')
+            (name, username) values ('bench press', 'qwerty')
         ;
     ''')
     connection.commit()
 
     cursor.execute('''
         insert into exercises 
-            (name) values ('squat')
+            (name, username) values ('squat', 'qwerty')
         ;
     ''')
     connection.commit()

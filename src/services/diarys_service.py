@@ -70,7 +70,8 @@ class DiarysService:
             Lista harjoituksista
 
         """
-        exercises = self._exercise_repository.find_all_exercises()
+        username = self._user.username
+        exercises = self._exercise_repository.find_all_exercises(username)
         return exercises
 
     def add_new_exercise(self, excercise_name):
@@ -79,7 +80,8 @@ class DiarysService:
         Args:
             excercise_name: harjoituksen nimi
         """
-        self._exercise_repository.add_new_exercise(excercise_name)
+        username = self._user.username
+        self._exercise_repository.add_new_exercise(excercise_name, username)
 
     def add_new_routine(self, routine):
         """Lisää uuden harjoituskerran/harjoitukset
@@ -87,16 +89,18 @@ class DiarysService:
         Args:
             routine: sanakirja, jossa tiedot
         """
+        username = self._user.username
         for key, values in routine.items():
             for i in range(0, len(values[0])):
                 exr_ = values[0][i]
                 sets_ = values[1][i]
                 reps_ = values[2][i]
                 kilos_ = values[3][i]
-                self._routine_repository.add_new_routine(key, exr_, sets_, reps_, kilos_)
+                self._routine_repository.add_new_routine(username,key, exr_, sets_, reps_, kilos_)
 
     def find_all_routines(self):
-        routines = self._routine_repository.find_all_routines()
+        username = self._user.username
+        routines = self._routine_repository.find_all_routines(username)
         return routines
 
     def delete_routine_by_id(self, id):
@@ -111,7 +115,6 @@ class DiarysService:
             Kirjautunut käyttäjä User-luokan oliona.
         """
         user = self._user_repository.find_by_username(username)
-        print(user)
 
         if user is None or user.password != password:
             #raise InvalidCredentialsError("Invalid username or password")

@@ -15,9 +15,7 @@ class AnalyticsView:
         self._handle_logout = handle_logout
         self._handle_show_adding_excercise_view = handle_show_adding_excercise_view
         self._handle_show_edit_view = handle_show_edit_view
-        #self.handle_show_login_view = handle_show_login_view
         self._radio_var = 1
-       
         self._summary_days =0
         self._summary_exercises =0
         self._summary_total =0
@@ -26,11 +24,9 @@ class AnalyticsView:
         self._initialize()
 
     def pack(self):
-        # if self.frame is not None:
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
-        # if self.frame is not None:
         self._frame.destroy()
 
     def _logout_handler(self):
@@ -40,25 +36,19 @@ class AnalyticsView:
 
     def _clean_data_summary(self):
         routines = pd.DataFrame(diarys_service.find_all_routines())
-        column_names = ["Id", "Date", "Exercise", "Sets", "Reps", "Kilos"]
+        column_names = ["Id","Username", "Date", "Exercise", "Sets", "Reps", "Kilos"]
         routines.columns = column_names
+        routines.drop(["Username"], axis=1, inplace=True)
         routines = routines.assign(Total = lambda x: x.Sets * x.Reps * x.Kilos)
-        
-        #year, month, week = str(routines["Date"].datetime.isocalendar())
         
         routines["Year"] = routines.Date.str[:4]
         routines["Month"] = routines.Date.str[6:7]
-        #print(routines)
 
         cur_day= datetime.today().date()
         cur_month = cur_day.month
         cur_year = cur_day.year
 
-        #print(str(cur_month))
-        #print(str(cur_year))
-
         radio_var = self._radio_var.get()
-        #print(radio_var)
 
         if radio_var ==1:
             routines_summary = routines[routines["Date"] == str(cur_day)]

@@ -10,7 +10,7 @@ class RoutineRepository:
         """
         self._connection = connection
 
-    def add_new_routine(self, date, exr, sets, reps, kilos):
+    def add_new_routine(self, username, date, exr, sets, reps, kilos):
         """Tallentaa  uuden harjoitustapahtuman tietokantaan.
 
         Args:
@@ -22,8 +22,8 @@ class RoutineRepository:
 
         """
         cursor = self._connection.cursor()
-        cursor.execute("insert into routines (date, exercise, sets, reps, kilos) values(?,?,?,?,?)",
-        (date,exr, sets, reps, kilos,)
+        cursor.execute("insert into routines (username, date, exercise, sets, reps, kilos) values(?,?,?,?,?,?)",
+        (username,date,exr, sets, reps, kilos,)
         )
         self._connection.commit()
 
@@ -42,14 +42,14 @@ class RoutineRepository:
 
 
 
-    def find_all_routines(self):
+    def find_all_routines(self,username):
         """Palauttaa kaikki harjoitustapahtumat tietokannasta.
 
         Returns:
             Palauttaa listan.
         """
         cursor = self._connection.cursor()
-        cursor.execute("select * from routines")
+        cursor.execute("select * from routines where username==?",[username])
         rows = cursor.fetchall()
         return rows
 

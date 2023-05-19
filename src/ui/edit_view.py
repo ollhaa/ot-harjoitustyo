@@ -42,15 +42,21 @@ class EditView:
 
     def _data_summary(self):
         self._exercices = pd.DataFrame(diarys_service.find_all_routines())
-        column_names = ["Id", "Date", "Exercise", "Sets", "Reps", "Kilos"]
+        column_names = ["Id","Username", "Date", "Exercise", "Sets", "Reps", "Kilos"]
         self._exercices.columns = column_names
+        self._exercices.drop(["Username"], axis=1, inplace=True)
         radio_var = self._radio_var.get()
         if radio_var ==1 and self._exercices.shape[0] >=10:
             self._exercices =self._exercices.iloc[-10:]
             self._initialize_other()
         elif radio_var ==1 and self._exercices.shape[0] >=2:
             rows = self._exercices.shape[0]
-            print("rows",rows)
+            self._exercices =self._exercices.iloc[-rows:]
+            self._initialize_other()
+        elif radio_var ==2 and self._exercices.shape[0] >=10:
+            self._initialize_other()
+        elif radio_var ==2 and self._exercices.shape[0] >=2:
+            rows = self._exercices.shape[0]
             self._exercices =self._exercices.iloc[-rows:]
             self._initialize_other()
         else: 
@@ -59,7 +65,6 @@ class EditView:
     def _delete(self):
         id_del = self._radio_var_delete.get()
         diarys_service.delete_routine_by_id(id_del)
-        #self._handle_adding_excercise_view
         self._test()
 
     def _test(self):
@@ -68,11 +73,15 @@ class EditView:
 
     def _open_popup(self):
         top= Toplevel(self._frame)
-        top.geometry("605x190")
+        top.geometry("585x120")
         top.resizable(0, 0)
         top.title("Help: Edit exercise")
-        ttk.Label(top, text= 
+        ttk.Label(top, text=
+        "Select one of the following:\n"
+            "\t*Last 10 \n"
+            "\t*All \n"
         "\n"
+        "Then press 'Find'. You can delete routines by selecting the routine then pressing 'Delete'. \n"
         "You can also go Analytics view ('ANALYTICS?) or to other frames.\n"
         "If you want to logout then press 'LOGOUT?" 
         ).place(x=0,y=0)
@@ -156,7 +165,6 @@ class EditView:
             master=self._frame,
             text="HELP?",
             command= lambda:self._open_popup()
-            #background ='#A877BA'
         )
 
         help_button.grid(
