@@ -19,6 +19,8 @@ class AnalyticsView:
         self._summary_days =0
         self._summary_exercises =0
         self._summary_total =0
+        self._error_variable = None
+        self._error_label = None
         
         
         self._initialize()
@@ -33,48 +35,63 @@ class AnalyticsView:
         diarys_service.logout()
         self._handle_logout()
 
+    def _show_error(self, message):
+        self._error_variable.set(message)
+        self._error_label.grid(row=8, column=0, columnspan=2)
+
+    def _hide_error(self):
+        self._error_label.grid_remove()
+
 
     def _clean_data_summary(self):
-        routines = pd.DataFrame(diarys_service.find_all_routines())
-        column_names = ["Id","Username", "Date", "Exercise", "Sets", "Reps", "Kilos"]
-        routines.columns = column_names
-        routines.drop(["Username"], axis=1, inplace=True)
-        routines = routines.assign(Total = lambda x: x.Sets * x.Reps * x.Kilos)
-        
-        routines["Year"] = routines.Date.str[:4]
-        routines["Month"] = routines.Date.str[6:7]
+        self._hide_error()
+        try:
+            routines = pd.DataFrame(diarys_service.find_all_routines())
+            column_names = ["Id","Username", "Date", "Exercise", "Sets", "Reps", "Kilos"]
+            routines.columns = column_names
+            routines.drop(["Username"], axis=1, inplace=True)
+            routines = routines.assign(Total = lambda x: x.Sets * x.Reps * x.Kilos)
+            
+            routines["Year"] = routines.Date.str[:4]
+            routines["Month"] = routines.Date.str[6:7]
 
-        cur_day= datetime.today().date()
-        cur_month = cur_day.month
-        cur_year = cur_day.year
+            cur_day= datetime.today().date()
+            cur_month = cur_day.month
+            cur_year = cur_day.year
 
-        radio_var = self._radio_var.get()
+            radio_var = self._radio_var.get()
 
-        if radio_var ==1:
-            routines_summary = routines[routines["Date"] == str(cur_day)]
-        elif radio_var ==2:
-            routines_summary = routines[routines["Month"] == str(cur_month)]
-            routines_summary = routines_summary[routines_summary["Year"] == str(cur_year)]
-        elif radio_var == 3:
-            routines_summary = routines[routines["Year"] == str(cur_year)]
-        else:
-            routines_summary = routines.copy()
+            if radio_var ==1:
+                routines_summary = routines[routines["Date"] == str(cur_day)]
+            elif radio_var ==2:
+                routines_summary = routines[routines["Month"] == str(cur_month)]
+                routines_summary = routines_summary[routines_summary["Year"] == str(cur_year)]
+            elif radio_var == 3:
+                routines_summary = routines[routines["Year"] == str(cur_year)]
+            else:
+                routines_summary = routines.copy()
 
-        self._summary_days = len(routines_summary.Date.unique())
-        self._summary_exercises = len(routines_summary.Exercise.unique())
-        self._summary_total = routines_summary.Total.sum()
+            self._summary_days = len(routines_summary.Date.unique())
+            self._summary_exercises = len(routines_summary.Exercise.unique())
+            self._summary_total = routines_summary.Total.sum()
 
-        labels = routines_summary.Exercise.unique().tolist()
+            labels = routines_summary.Exercise.unique().tolist()
 
-        sizes = routines_summary.groupby(['Exercise']).sum()
-        sizes = sizes.Total.tolist()
+            sizes = routines_summary.groupby(['Exercise']).sum()
+            sizes = sizes.Total.tolist()
 
-        figure = plt.Figure(figsize=(3,3), dpi=100)
-        plt.pie(sizes, labels=labels)
-        
+            figure = plt.Figure(figsize=(3,3), dpi=100)
+            plt.pie(sizes, labels=labels)
+            
 
-        self._initialize_other()
-        plt.show()
+            self._initialize_other()
+            plt.show()
+        except ValueError:
+            self._show_error("Did u add any?")
+            
+        except IndexError:
+            self._show_error("Did u add any?")
+            
 
     def _open_popup(self):
         top= Toplevel(self._frame)
@@ -101,6 +118,12 @@ class AnalyticsView:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
+        self._error_variable = StringVar(self._frame)
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
+            foreground="red"
+        )
         self._initialize_logout_button()
         self._initialize_edit_view_button()
         self._initialize_help_button()

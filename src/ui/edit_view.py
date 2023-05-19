@@ -41,26 +41,29 @@ class EditView:
         self._error_label.grid_remove()
 
     def _data_summary(self):
-        self._exercices = pd.DataFrame(diarys_service.find_all_routines())
-        column_names = ["Id","Username", "Date", "Exercise", "Sets", "Reps", "Kilos"]
-        self._exercices.columns = column_names
-        self._exercices.drop(["Username"], axis=1, inplace=True)
-        radio_var = self._radio_var.get()
-        if radio_var ==1 and self._exercices.shape[0] >=10:
-            self._exercices =self._exercices.iloc[-10:]
-            self._initialize_other()
-        elif radio_var ==1 and self._exercices.shape[0] >=2:
-            rows = self._exercices.shape[0]
-            self._exercices =self._exercices.iloc[-rows:]
-            self._initialize_other()
-        elif radio_var ==2 and self._exercices.shape[0] >=10:
-            self._initialize_other()
-        elif radio_var ==2 and self._exercices.shape[0] >=2:
-            rows = self._exercices.shape[0]
-            self._exercices =self._exercices.iloc[-rows:]
-            self._initialize_other()
-        else: 
-            self._show_error("Not enough exercices")
+        try:
+            self._exercices = pd.DataFrame(diarys_service.find_all_routines())
+            column_names = ["Id","Username", "Date", "Exercise", "Sets", "Reps", "Kilos"]
+            self._exercices.columns = column_names
+            self._exercices.drop(["Username"], axis=1, inplace=True)
+            radio_var = self._radio_var.get()
+            if radio_var ==1 and self._exercices.shape[0] >=10:
+                self._exercices =self._exercices.iloc[-10:]
+                self._initialize_other()
+            elif radio_var ==1 and self._exercices.shape[0] >=2:
+                rows = self._exercices.shape[0]
+                self._exercices =self._exercices.iloc[-rows:]
+                self._initialize_other()
+            elif radio_var ==2 and self._exercices.shape[0] >=10:
+                self._initialize_other()
+            elif radio_var ==2 and self._exercices.shape[0] >=2:
+                rows = self._exercices.shape[0]
+                self._exercices =self._exercices.iloc[-rows:]
+                self._initialize_other()
+            else: 
+                self._show_error("Add more!")
+        except ValueError:
+            self._show_error("No added!")
 
     def _delete(self):
         id_del = self._radio_var_delete.get()

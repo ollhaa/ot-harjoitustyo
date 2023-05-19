@@ -32,11 +32,11 @@ class CreateUserView:
         second_password = self._second_password.get()
 
         if len(username) == 0 or len(username) > 12:
-            self._show_error("The length of username must be 1-12")
+            self._show_error("Length of username must be 1-12")
         elif len(password) > 12 or len(password) <4:
-            self._show_error("The length of password must be 4-12")
+            self._show_error("Length of password must be 4-12")
         elif password != second_password:
-            self._show_error("The second password is not the same")
+            self._show_error("Passwords are not same!")
         else:
             try:   
                 diarys_service.create_user(username, password)
@@ -46,7 +46,7 @@ class CreateUserView:
 
     def _show_error(self, message):
         self._error_variable.set(message)
-        self._error_label.grid(row=9, column=0,  padx=0, pady=5)
+        self._error_label.grid(row=9, column=0, columnspan =2,  padx=0, pady=5, sticky = constants.W)
 
     def _hide_error(self):
         self._error_label.grid_remove()

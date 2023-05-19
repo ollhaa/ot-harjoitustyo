@@ -20,6 +20,8 @@ class AddingExerciseView:
         self._kg_entry= None
         self._to_routine = {}
         self._summary_table = None
+        self._error_variable = None
+        self._error_label = None
 
         self._initialize()
 
@@ -32,66 +34,82 @@ class AddingExerciseView:
     def _logout_handler(self):
         diarys_service.logout()
         self._handle_logout()
+    
+    def _show_error(self, message):
+        self._error_variable.set(message)
+        self._error_label.grid(row=8, column=0, columnspan=2)
+
+    def _hide_error(self):
+        self._error_label.grid_remove()
 
     def _analytics_handler(self):
         self._handle_analytics_view()
 
     def _get_date(self):
+        self._hide_error()
         self._selected_date.config(text= self._calender.get_date())
 
 
     def _add_to_alternatives(self):
         new = self._new.get()
-        if new is not None:
-            alt = new.lower()
-            exists_alt = diarys_service.find_all_exercises()
-            print(exists_alt)
-            exists_alt = [x.name for x in exists_alt]
-            print(exists_alt)
-            if alt not in exists_alt:
-                diarys_service.add_new_exercise(alt)
+        try:
+            if new is not None:
+                alt = new.lower()
+                exists_alt = diarys_service.find_all_exercises()
+                exists_alt = [x.name for x in exists_alt]
+                if alt not in exists_alt:
+                    diarys_service.add_new_exercise(alt)
+        except ValueError:
+            self._show_error("Added already!")
         self._new = None
         self._initialize_options()
 
 
     def _add_to_routine(self):
+        self._hide_error()
         help_ = self._listbox.curselection()
-        selected = self._listbox.get(help_[0])
-        date = str(self._selected_date.cget("text"))
-        print("date first:", str(date))
-        date = datetime.strptime(date, '%d-%m-%Y').date()
-        print("date then: ", str(date))
-        sets = self._clicked.get()
-        reps= self._clicked2.get()
-        kg = self._kg_entry.get()
+        #print("help_", help_)
+        try:
+            selected = self._listbox.get(help_[0])
+            date = str(self._selected_date.cget("text"))
+            date = datetime.strptime(date, '%d-%m-%Y').date()
+            sets = self._clicked.get()
+            reps= self._clicked2.get()
+            kg = self._kg_entry.get()
 
-        if date not in self._to_routine:
-            self._to_routine[date] = [[],[],[],[]]
-        
-        if selected is not None and date is not None and kg is not None:
-            self._to_routine[date][0].append(selected)
-            self._to_routine[date][1].append(sets)
-            self._to_routine[date][2].append(reps)
-            self._to_routine[date][3].append(kg)
+            if date not in self._to_routine:
+                self._to_routine[date] = [[],[],[],[]]
 
-            joined_facts = str(date) + ": " + str(selected) + " " + str(sets) + "*" + str(reps) +"*" + str(kg)
-            self._summary_table.insert(0, joined_facts)
+            if selected is not None and date is not None and kg != "":
+                    self._to_routine[date][0].append(selected)
+                    self._to_routine[date][1].append(sets)
+                    self._to_routine[date][2].append(reps)
+                    self._to_routine[date][3].append(kg)
 
-        #print(self.to_routine)
-        self._summary_table.grid(row=3, column=12, padx=15,columnspan=8, sticky=constants.N)
+                    joined_facts = str(date) + ": " + str(selected) + " " + str(sets) + "*" + str(reps) +"*" + str(kg)
+                    self._summary_table.insert(0, joined_facts)
+                    self._summary_table.grid(row=3, column=12, padx=15,columnspan=8, sticky=constants.N)
+            else:
+                self._show_error("Check options!")
+        except IndexError:
+            self._show_error("Check options!")
+            self._delete_added()
+        except ValueError:
+            self._show_error("Check options!")
+            self._delete_added()
+
         
     def _delete_added(self):
-        #self.selected_date = None
         self._initialize_exercise_summary()
         self._to_routine.clear()
+        self._hide_error()
 
     def _save_routine(self):
+        #print(self._to_routine)
         if self._to_routine:
             diarys_service.add_new_routine(self._to_routine)
 
         self._delete_added()
-
-
 
     def _open_popup(self):
         top= Toplevel(self._frame)
@@ -118,6 +136,15 @@ class AddingExerciseView:
     def _initialize(self):
         
         self._frame = ttk.Frame(master=self._root)
+        self._error_variable = StringVar(self._frame)
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
+            foreground="red"
+        )
+        self._error_label.grid(padx=5, pady=5)
+
+        self._hide_error()
         
         self._initialize_logout_button()
         self._initialize_edit_view_button()
@@ -291,10 +318,10 @@ class AddingExerciseView:
         self._rep_menu = OptionMenu(self._frame, self._clicked2, *alt_reps)
         kg_label = ttk.Label(master=self._frame, text="Kilos:")
         clicked3 = IntVar(self._frame)
-        clicked3.set(6)
+        clicked3.set(30)
         
-        self._kg_entry = ttk.Combobox(master=self._frame, textvariable= clicked3, width=4)
-        self._kg_entry['values'] = [number/10.0 for number in range(0,2000, 5)]
+        self._kg_entry = ttk.Combobox(master=self._frame, textvariable= clicked3, width=4, state= "readonly")
+        self._kg_entry['values'] = [number/10.0 for number in range(5,2000, 5)]
         
 
         date_label.grid(row=2, column=3)
@@ -322,7 +349,6 @@ class AddingExerciseView:
     def _initialize_exercise_summary(self):
         summary_label = ttk.Label(master=self._frame,
             text= "You are adding:"
-            #command=self.add_to_routine
         )
         self._summary_table = Listbox(master=self._frame, width=40)
         summary_label.grid(row= 2, column= 12, padx= 15, columnspan=8, sticky=constants.N)
