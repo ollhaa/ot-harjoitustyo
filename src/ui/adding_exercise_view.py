@@ -5,15 +5,15 @@ from services.diarys_service import diarys_service
 
 class AddingExerciseView:
 
-    def __init__(self, root, handle_logout, handle_analytics_view, handle_edit_view):
+    def __init__(self, root, to_login_view, to_analytics_view, to_edit_view):
         self._root = root
         self._frame = None
-        self._handle_logout = handle_logout
-        self._handle_analytics_view = handle_analytics_view
-        self._handle_edit_view = handle_edit_view
+        self._to_login_view = to_login_view
+        self._to_analytics_view = to_analytics_view
+        self._to_edit_view = to_edit_view
         self._calender = None
         self._selected_date = None
-        self._new=None
+        self._new = None
         self._listbox = None
         self._clicked = None
         self._clicked2 = None
@@ -22,7 +22,6 @@ class AddingExerciseView:
         self._summary_table = None
         self._error_variable = None
         self._error_label = None
-
         self._initialize()
 
     def pack(self):
@@ -33,7 +32,7 @@ class AddingExerciseView:
 
     def _logout_handler(self):
         diarys_service.logout()
-        self._handle_logout()
+        self._to_login_view()
     
     def _show_error(self, message):
         self._error_variable.set(message)
@@ -43,12 +42,11 @@ class AddingExerciseView:
         self._error_label.grid_remove()
 
     def _analytics_handler(self):
-        self._handle_analytics_view()
+        self._to_analytics_view()
 
     def _get_date(self):
         self._hide_error()
         self._selected_date.config(text= self._calender.get_date())
-
 
     def _add_to_alternatives(self):
         new = self._new.get()
@@ -64,11 +62,9 @@ class AddingExerciseView:
         self._new = None
         self._initialize_options()
 
-
     def _add_to_routine(self):
         self._hide_error()
         help_ = self._listbox.curselection()
-        #print("help_", help_)
         try:
             selected = self._listbox.get(help_[0])
             date = str(self._selected_date.cget("text"))
@@ -105,7 +101,6 @@ class AddingExerciseView:
         self._hide_error()
 
     def _save_routine(self):
-        #print(self._to_routine)
         if self._to_routine:
             diarys_service.add_new_routine(self._to_routine)
 
@@ -131,10 +126,7 @@ class AddingExerciseView:
         "If you want to logout then press 'LOGOUT?" 
         ).place(x=0,y=0)
 
-
-
-    def _initialize(self):
-        
+    def _initialize(self):   
         self._frame = ttk.Frame(master=self._root)
         self._error_variable = StringVar(self._frame)
         self._error_label = ttk.Label(
@@ -143,7 +135,6 @@ class AddingExerciseView:
             foreground="red"
         )
         self._error_label.grid(padx=5, pady=5)
-
         self._hide_error()
         
         self._initialize_logout_button()
@@ -154,15 +145,11 @@ class AddingExerciseView:
         self._initialize_exercise_summary()
         self._initialize_help_button()
         
-
-        
-
     def _initialize_logout_button(self):
         logout_button = ttk.Button(
             master=self._frame,
             text="LOGOUT?",
-            #bg ="red",
-            command = self._logout_handler
+            command = self._to_login_view
         )
 
         logout_button.grid(
@@ -177,7 +164,7 @@ class AddingExerciseView:
         edit_view_button = ttk.Button(
             master=self._frame,
             text="EDIT?",
-            command = self._handle_edit_view
+            command = self._to_edit_view
         )
 
         edit_view_button.grid(
@@ -192,8 +179,7 @@ class AddingExerciseView:
         summary_view_button = ttk.Button(
             master=self._frame,
             text="ANALYTICS?",
-            #background ='#A877BA'
-            command = lambda:self._analytics_handler()
+            command = self._to_analytics_view
         )
 
         summary_view_button.grid(
@@ -210,7 +196,6 @@ class AddingExerciseView:
             master=self._frame,
             text="HELP?",
             command= lambda:self._open_popup()
-            #background ='#A877BA'
         )
 
         help_button.grid(
@@ -222,18 +207,12 @@ class AddingExerciseView:
             sticky=constants.EW
         )
 
-
-    
-        
     def _initialize_options(self):
         head_label = ttk.Label(master=self._frame, text="Choose the exercise:")
         exercise_names = diarys_service.find_all_exercises()
-        #print(exercise_names)
         self._listbox = Listbox(master= self._frame, selectmode='SINGLE')
         for i in range(len(exercise_names)):
-            #listbox.insert(i,"Maastaveto") 
             self._listbox.insert(i, exercise_names[i].get_name())
-
 
         head_label.grid(row=2, column=0, columnspan=2, sticky=constants.W)
 
@@ -245,20 +224,20 @@ class AddingExerciseView:
         )
 
         add_exercise_button = ttk.Button(
-            master=self._frame,
-            text="Add to routine",
+            master = self._frame,
+            text = "Add to routine",
             command = lambda:self._add_to_routine()
         )
 
         save_routine_button = ttk.Button(
-            master=self._frame,
-            text="Save the routine",
-            command= lambda:self._save_routine()
+            master = self._frame,
+            text = "Save the routine",
+            command = lambda:self._save_routine()
         )
 
         delete_selected_excercise_button = ttk.Button(
-            master=self._frame,
-            text="Delete added",
+            master = self._frame,
+            text = "Delete added",
             command = lambda:self._delete_added()    
         )
 
@@ -287,8 +266,6 @@ class AddingExerciseView:
             sticky=constants.EW
         )
 
-
-
     def _initialize_other(self):
         date_label = ttk.Label(master= self._frame, text = "Choose the day:")
         self._calender = Calendar(master = self._frame,date_pattern="dd-mm-yyyy", selectmode = 'day',
@@ -299,12 +276,10 @@ class AddingExerciseView:
         date_button= ttk.Button(
             master=self._frame,
             text="Confirm date",
-            command = lambda:self._get_date()
-            
+            command = lambda:self._get_date()      
         )
 
         select_label = ttk.Label(master=self._frame, text="Select options:")
-
         set_label = ttk.Label(master=self._frame, text="Sets:")
         self._clicked =IntVar(self._frame)
         self._clicked.set(3)
@@ -323,7 +298,6 @@ class AddingExerciseView:
         self._kg_entry = ttk.Combobox(master=self._frame, textvariable= clicked3, width=4, state= "readonly")
         self._kg_entry['values'] = [number/10.0 for number in range(5,2000, 5)]
         
-
         date_label.grid(row=2, column=3)
         self._calender.grid(row = 3, column= 3)
         selected_date_label.grid(row=4, column=3)
@@ -353,5 +327,3 @@ class AddingExerciseView:
         self._summary_table = Listbox(master=self._frame, width=40)
         summary_label.grid(row= 2, column= 12, padx= 15, columnspan=8, sticky=constants.N)
         self._summary_table.grid(row=3, column=12, padx=15,columnspan=8, sticky=constants.N)
-
-

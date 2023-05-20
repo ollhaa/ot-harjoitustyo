@@ -3,7 +3,7 @@ from services.diarys_service import diarys_service, InvalidCredentialsError
 
 class LoginView:
     """Käyttäjän kirjautumisnäkymä."""
-    def __init__(self, root, handle_show_create_user_view, handle_show_adding_excercise_view):
+    def __init__(self, root, to_create_view, to_adding_view):
         """Luokan konstruktori. Luo uuden kirjautumisnäkymän.
         Args:
             root:
@@ -14,15 +14,13 @@ class LoginView:
                 Kutsuttava-arvo, jota kutsutaan kun siirrytään harjoituksenlisäämisnäkymään.
         """
         self._root = root
-        self._handle_show_create_user_view = handle_show_create_user_view
-        self._handle_show_adding_excercise_view = handle_show_adding_excercise_view
+        self._to_create_view = to_create_view
+        self._to_adding_view = to_adding_view
         self._frame = None
         self._entry_username = None
         self._entry_password = None
-
         self._error_variable = None
         self._error_label = None
-
         self._initialize()
 
     def pack(self):
@@ -39,7 +37,7 @@ class LoginView:
 
         try:
             diarys_service.login(username, password)
-            self._handle_show_adding_excercise_view()
+            self._to_adding_view()
         except ValueError:
             self._show_error("Invalid username or password")
 
@@ -85,7 +83,7 @@ class LoginView:
         to_create_user_button = ttk.Button(
             master=self._frame,
             text="I do not have an account yet",
-            command=self._handle_show_create_user_view
+            command=self._to_create_view
         )
 
         login_button = ttk.Button(

@@ -1,7 +1,6 @@
 from ttkthemes import ThemedTk
 from ui.ui import UI
 
-
 def main():
     window = ThemedTk(theme="black", background=True)
     window.title("Exercise diarys")

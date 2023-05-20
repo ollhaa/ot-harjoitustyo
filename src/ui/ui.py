@@ -4,7 +4,6 @@ from ui.adding_exercise_view import AddingExerciseView
 from ui.analytics_view import AnalyticsView
 from ui.edit_view import EditView
 
-
 class UI:
 
     def __init__(self, root):
@@ -18,9 +17,7 @@ class UI:
         self._hide_current_view()
         self._current_view = CreateUserView(
             self._root,
-            self._show_login_view,
-            self._show_analytics_view,
-            #self._show_edit_view
+            self._show_login_view
         )
         self._current_view.pack()
 
@@ -30,8 +27,7 @@ class UI:
         self._current_view = LoginView(
             self._root,
             self._show_create_user_view,
-            self._show_adding_excercise_view,
-            #self._show_edit_view
+            self._show_adding_excercise_view
         )
 
         self._current_view.pack()
@@ -45,7 +41,6 @@ class UI:
             self._show_analytics_view,
             self._show_edit_view
         )
-
         self._current_view.pack()
 
     def _show_analytics_view(self):

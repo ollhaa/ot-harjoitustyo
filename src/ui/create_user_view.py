@@ -4,29 +4,24 @@ from services.diarys_service import diarys_service, UsernameExistsError
 
 class CreateUserView:
 
-    def __init__(self, root, handle_show_login_view, handle_analytics_view):
+    def __init__(self, root, to_login_view):
         self._root = root
-        #self.handle_create_user = handle_create_user
-        self._handle_show_login_view = handle_show_login_view
-        self._handle_analytics_view = handle_analytics_view
+        self._to_login_view = to_login_view
         self._frame = None
         self._entry_username = None
         self._entry_password = None
         self._second_password = None
         self._error_variable = None
         self._error_label = None
-
         self._initialize()
 
     def pack(self):
-        # if self.frame is not None:
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
-        # if self.frame is not None:
         self._frame.destroy()
 
-    def _create_user_handler(self):
+    def _create_user(self):
         username = self._entry_username.get()
         password = self._entry_password.get()
         second_password = self._second_password.get()
@@ -40,7 +35,7 @@ class CreateUserView:
         else:
             try:   
                 diarys_service.create_user(username, password)
-                self._handle_show_login_view()
+                self._to_login_view()
             except ValueError:
                 self._show_error("Username is not allowed")
 
@@ -77,9 +72,6 @@ class CreateUserView:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        self._frame.grid_columnconfigure(2, weight=1)
-        self._frame.configure(padding=15)
-
         self._error_variable = StringVar(self._frame)
         self._error_label = ttk.Label(
             master=self._frame,
@@ -94,16 +86,14 @@ class CreateUserView:
         create_button = ttk.Button(
             master=self._frame,
             text="Register",
-            command=self._create_user_handler
+            command=self._create_user
         )
 
         login_view_button = ttk.Button(
             master=self._frame,
             text="I already have an account",
-            command=self._handle_show_login_view
+            command=self._to_login_view
         )
 
         create_button.grid(row= 7, column =0,padx=5, pady=5, sticky=constants.EW)
-
         login_view_button.grid(row= 8, column =0,padx=5, pady=5, sticky=constants.EW)
- 

@@ -1,28 +1,24 @@
 from tkinter import ttk, constants, StringVar, Toplevel, IntVar, Radiobutton
 from services.diarys_service import diarys_service, UsernameExistsError
 from datetime import datetime
-#import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import pandas as pd
 
-
 class AnalyticsView:
 
-    def __init__(self, root, handle_logout ,handle_show_adding_excercise_view, handle_show_edit_view):
+    def __init__(self, root, to_login_view, to_adding_view, to_edit_view):
         self._root = root
         self._frame = None
-        self._handle_logout = handle_logout
-        self._handle_show_adding_excercise_view = handle_show_adding_excercise_view
-        self._handle_show_edit_view = handle_show_edit_view
+        self._to_login_view = to_login_view
+        self._to_adding_view = to_adding_view
+        self._to_edit_view = to_edit_view
         self._radio_var = 1
         self._summary_days =0
         self._summary_exercises =0
         self._summary_total =0
         self._error_variable = None
         self._error_label = None
-        
-        
         self._initialize()
 
     def pack(self):
@@ -33,7 +29,7 @@ class AnalyticsView:
 
     def _logout_handler(self):
         diarys_service.logout()
-        self._handle_logout()
+        self._to_login_view
 
     def _show_error(self, message):
         self._error_variable.set(message)
@@ -41,7 +37,6 @@ class AnalyticsView:
 
     def _hide_error(self):
         self._error_label.grid_remove()
-
 
     def _clean_data_summary(self):
         self._hide_error()
@@ -76,23 +71,21 @@ class AnalyticsView:
             self._summary_total = routines_summary.Total.sum()
 
             labels = routines_summary.Exercise.unique().tolist()
-
             sizes = routines_summary.groupby(['Exercise']).sum()
             sizes = sizes.Total.tolist()
 
             figure = plt.Figure(figsize=(3,3), dpi=100)
             plt.pie(sizes, labels=labels)
             
-
             self._initialize_other()
             plt.show()
+
         except ValueError:
             self._show_error("Did u add any?")
             
         except IndexError:
             self._show_error("Did u add any?")
             
-
     def _open_popup(self):
         top= Toplevel(self._frame)
         top.geometry("550x155")
@@ -110,12 +103,6 @@ class AnalyticsView:
         "If you want to logout then press 'LOGOUT?" 
         ).place(x=0,y=0)
 
-    def _adding_view_handler(self):
-        self._handle_show_adding_excercise_view()
-
-    def _edit_view_handler(self):
-        self._handle_show_edit_view()
-
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         self._error_variable = StringVar(self._frame)
@@ -129,12 +116,8 @@ class AnalyticsView:
         self._initialize_help_button()
         self._initialize_adding_exercise_view_button()
         self._initialize_options()
-
         self._initialize_other()
         
-
-
-
     def _initialize_logout_button(self):
         logout_button = ttk.Button(
             master=self._frame,
@@ -156,7 +139,7 @@ class AnalyticsView:
             master=self._frame,
             text="EDIT?",
             #bg ="red"
-            command=self._edit_view_handler
+            command=self._to_edit_view
         )
 
         edit_view_button.grid(
@@ -172,8 +155,7 @@ class AnalyticsView:
         summary_view_button = ttk.Button(
             master=self._frame,
             text="ADD?",
-            #background ='#A877BA'
-            command = lambda:self._adding_view_handler()
+            command = self._to_adding_view
         )
 
         summary_view_button.grid(
@@ -181,7 +163,6 @@ class AnalyticsView:
             column=3,
             padx=10,
             pady=10,
-            
             sticky=constants.EW
         )
     
@@ -190,7 +171,6 @@ class AnalyticsView:
             master=self._frame,
             text="HELP?",
             command= lambda:self._open_popup()
-            #background ='#A877BA'
         )
 
         help_button.grid(
@@ -265,8 +245,3 @@ class AnalyticsView:
         label_routines_days_label.grid(row=1, column= 3, columnspan=3, padx=10, pady=10, sticky=constants.EW)
         label_routines_exercises_label.grid(row=1, column = 6, columnspan=3, padx=10, pady=10, sticky=constants.EW)
         label_routines_total_label.grid(row=1, column =9, columnspan=3, padx=10, pady=10, sticky=constants.EW)
-
-        
-
-
-        
