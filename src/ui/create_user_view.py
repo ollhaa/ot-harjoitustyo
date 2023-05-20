@@ -3,6 +3,7 @@ from services.diarys_service import diarys_service, UsernameExistsError
 
 
 class CreateUserView:
+    """Näkymä, jossa luodaan uusi käyttäjä."""
 
     def __init__(self, root, to_login_view):
         self._root = root
@@ -11,14 +12,16 @@ class CreateUserView:
         self._entry_username = None
         self._entry_password = None
         self._second_password = None
-        self._error_variable = None
+        self._error_message = None
         self._error_label = None
         self._initialize()
 
     def pack(self):
+        """"Näyttää näkymän."""
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """"Tuhoaa näkymän"""
         self._frame.destroy()
 
     def _create_user(self):
@@ -40,7 +43,7 @@ class CreateUserView:
                 self._show_error("Username is not allowed")
 
     def _show_error(self, message):
-        self._error_variable.set(message)
+        self._error_message.set(message)
         self._error_label.grid(row=9, column=0, columnspan =2,  padx=0, pady=5, sticky = constants.W)
 
     def _hide_error(self):
@@ -72,10 +75,10 @@ class CreateUserView:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        self._error_variable = StringVar(self._frame)
+        self._error_message = StringVar(self._frame)
         self._error_label = ttk.Label(
             master=self._frame,
-            textvariable=self._error_variable,
+            textvariable=self._error_message,
             foreground="red"
         )
 

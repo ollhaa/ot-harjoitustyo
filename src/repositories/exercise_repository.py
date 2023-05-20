@@ -1,8 +1,7 @@
 from database_connection import get_database_connection
 from entities.exercise import Exercise
 
-
-class ExcerciseRepository:
+class ExerciseRepository:
     """Harjoituksien tietokantaoperaatioista vastaava luokka.
     """
 
@@ -14,7 +13,10 @@ class ExcerciseRepository:
         self._connection = connection
 
     def find_all_exercises(self, username):
-        """Palauttaa kaikki harjoitukset tietokannasta.
+        """Palauttaa kaikki kirjatuneen käyttäjän harjoitukset tietokannasta.
+
+        Args:
+            username: Kirjatuneen käyttäjän nimi
 
         Returns:
             Palauttaa listan Exercise-luokan olioita.
@@ -23,21 +25,23 @@ class ExcerciseRepository:
         rows = cursor.execute("select * from exercises where username ==?", [username]).fetchall()
         return [Exercise(row["name"]) for row in rows]
 
-    def add_new_exercise(self, excercise_name, username):
-        """Tallentaa  uuden harjoituksen tietokantaan.
+    def add_new_exercise(self, exercise_name, username):
+        """Tallentaa kirjatuneen käyttäjän uuden harjoituksen tietokantaan.
 
         Args:
-            excercise_name: Tallennettavan harjoituksen nimi.
+            exercise_name: Tallennettavan harjoituksen nimi
+            username: Kirjatuneen käyttäjän nimi
+
         """
-        exr = excercise_name
-        username= username
+        exr = exercise_name
+        usrname = username
         cursor = self._connection.cursor()
         cursor.execute("insert into exercises (name, username) values(?,?)",
-        (exr, username,)
+        (exr, usrname,)
         )
         self._connection.commit()
 
-    def delete_all_excercises(self):
+    def delete_all_exercises(self):
         """Poistaa kaikki harjoitukset tietokannasta.
         """
         cursor = self._connection.cursor()
@@ -45,5 +49,4 @@ class ExcerciseRepository:
 
         self._connection.commit()
 
-
-exercise_repository = ExcerciseRepository(get_database_connection())
+exercise_repository = ExerciseRepository(get_database_connection())

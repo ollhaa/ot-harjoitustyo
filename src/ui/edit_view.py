@@ -5,33 +5,30 @@ import pandas as pd
 
 class EditView:
 
-    def __init__(self, root, handle_logout ,handle_show_adding_excercise_view, handle_analytics_view):
+    def __init__(self, root, to_login_view ,to_adding_view, to_analytics_view):
         self._root = root
         self._frame = None
-        self._handle_logout = handle_logout
-        self._handle_adding_excercise_view = handle_show_adding_excercise_view
-        self._handle_analytics_view = handle_analytics_view
+        self._to_login_view = to_login_view
+        self._to_adding_view = to_adding_view
+        self._to_analytics_view = to_analytics_view
         self._exercices = None
         self._radio_var =1
         self._radio_var_delete = None
-        
         self._error_variable = None
         self._error_label = None
-        
         self._initialize()
 
     def pack(self):
-        # if self.frame is not None:
+        """"Näyttää näkymän."""
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
-        #if self.frame is not None:
+        """"Tuhoaa näkymän."""
         self._frame.destroy()
         
-
     def _logout_handler(self):
         diarys_service.logout()
-        self._handle_logout()
+        self._to_login_view()
 
     def _show_error(self, message):
         self._error_variable.set(message)
@@ -68,11 +65,7 @@ class EditView:
     def _delete(self):
         id_del = self._radio_var_delete.get()
         diarys_service.delete_routine_by_id(id_del)
-        self._test()
-
-    def _test(self):
-        self._handle_adding_excercise_view() 
-        
+        self._to_adding_view()     
 
     def _open_popup(self):
         top= Toplevel(self._frame)
@@ -116,7 +109,6 @@ class EditView:
         logout_button = ttk.Button(
             master=self._frame,
             text="LOGOUT?",
-            #bg ="red",
             command = self._logout_handler
         )
 
@@ -134,7 +126,7 @@ class EditView:
         summary_view_button = ttk.Button(
             master=self._frame,
             text="ANALYTICS?",
-            command = self._handle_analytics_view
+            command = self._to_analytics_view
         )
 
         summary_view_button.grid(
@@ -150,7 +142,7 @@ class EditView:
         analytics_view_button = ttk.Button(
             master=self._frame,
             text="ADD?",
-            command = self._handle_adding_excercise_view
+            command = self._to_adding_view
         )
 
         analytics_view_button.grid(
@@ -221,10 +213,7 @@ class EditView:
         delete_label.grid(row=2, column=6)
 
     def _initialize_other(self):
-        #self._initialize()
-        #self._data_summary()
         self._radio_var_delete = IntVar()
-        print(self._radio_var_delete.get())
         rows = self._exercices.shape[0]
         for x in range(rows):
             for y in range(6):

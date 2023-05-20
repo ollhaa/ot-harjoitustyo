@@ -20,7 +20,7 @@ class AddingExerciseView:
         self._kg_entry= None
         self._to_routine = {}
         self._summary_table = None
-        self._error_variable = None
+        self._error_message = None
         self._error_label = None
         self._initialize()
 
@@ -35,7 +35,7 @@ class AddingExerciseView:
         self._to_login_view()
     
     def _show_error(self, message):
-        self._error_variable.set(message)
+        self._error_message.set(message)
         self._error_label.grid(row=8, column=0, columnspan=2)
 
     def _hide_error(self):
@@ -128,10 +128,10 @@ class AddingExerciseView:
 
     def _initialize(self):   
         self._frame = ttk.Frame(master=self._root)
-        self._error_variable = StringVar(self._frame)
+        self._error_message = StringVar(self._frame)
         self._error_label = ttk.Label(
             master=self._frame,
-            textvariable=self._error_variable,
+            textvariable=self._error_message,
             foreground="red"
         )
         self._error_label.grid(padx=5, pady=5)

@@ -40,10 +40,6 @@ class TestUserRepository(unittest.TestCase):
         users = user_repository.find_all_users()
         self.assertEqual(len(users), 0)
 
-    #def test_find_by_username(self):
-    #    user_repository.create(self.user_opa)
-    #    user = user_repository.find_by_username("opa")
-    #    self.assertEqual(user[0], "opa")
 
 
         

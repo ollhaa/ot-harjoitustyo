@@ -1,10 +1,10 @@
 import unittest
-from repositories.excercise_repository import exercise_repository
+from repositories.exercise_repository import exercise_repository
 from entities.exercise import Exercise
 
 class TestExcerciseRepository(unittest.TestCase):
     def setUp(self):
-        exercise_repository.delete_all_excercises()
+        exercise_repository.delete_all_exercises()
         self.exr_eka = Exercise("Mave")
         self.exr_toka = Exercise('Penkki')
 

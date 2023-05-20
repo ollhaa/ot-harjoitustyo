@@ -17,22 +17,24 @@ class AnalyticsView:
         self._summary_days =0
         self._summary_exercises =0
         self._summary_total =0
-        self._error_variable = None
+        self._error_message = None
         self._error_label = None
         self._initialize()
 
     def pack(self):
+        """"Näyttää näkymän."""
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """"Tuhoaa näkymän."""
         self._frame.destroy()
 
     def _logout_handler(self):
         diarys_service.logout()
-        self._to_login_view
+        self._to_login_view()
 
     def _show_error(self, message):
-        self._error_variable.set(message)
+        self._error_message.set(message)
         self._error_label.grid(row=8, column=0, columnspan=2)
 
     def _hide_error(self):
@@ -105,10 +107,10 @@ class AnalyticsView:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        self._error_variable = StringVar(self._frame)
+        self._error_message = StringVar(self._frame)
         self._error_label = ttk.Label(
             master=self._frame,
-            textvariable=self._error_variable,
+            textvariable=self._error_message,
             foreground="red"
         )
         self._initialize_logout_button()
@@ -122,7 +124,6 @@ class AnalyticsView:
         logout_button = ttk.Button(
             master=self._frame,
             text="LOGOUT?",
-            #bg ="red",
             command = self._logout_handler
         )
 

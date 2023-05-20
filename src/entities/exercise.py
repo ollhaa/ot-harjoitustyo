@@ -13,7 +13,5 @@ class Exercise:
         self.name = name
 
     def get_name(self):
-        """Palauttaa harjoituksen nimen
-        """
-
+        """Palauttaa harjoituksen nimen."""
         return self.name

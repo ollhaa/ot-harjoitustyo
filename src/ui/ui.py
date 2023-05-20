@@ -5,13 +5,15 @@ from ui.analytics_view import AnalyticsView
 from ui.edit_view import EditView
 
 class UI:
+    """Käyttöliittymäluokka."""
 
     def __init__(self, root):
         self._root = root
         self._current_view = None
 
     def start(self):
-        self._show_create_user_view()
+        """Käynnistää käyttöliittymän."""
+        self._show_login_view()
 
     def _show_create_user_view(self):
         self._hide_current_view()

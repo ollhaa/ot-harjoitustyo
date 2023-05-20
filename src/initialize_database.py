@@ -6,15 +6,11 @@ def drop_tables(connection):
     cursor.execute('''
         drop table if exists users;
     ''')
-
-    connection.commit()
-
+    #connection.commit()
     cursor.execute('''
         drop table if exists exercises;
         ''')
-
-    connection.commit()
-
+    #connection.commit()
     cursor.execute('''
         drop table if exists routines;
         ''')
@@ -30,19 +26,19 @@ def create_tables(connection):
             username text,
             password text,
             created timestamp
-        );
+        )
     ''')
-    connection.commit()
+    #connection.commit()
 
     cursor.execute('''
         create table exercises (
             id integer primary key,
             name text,
             username text
-        );
+        )
     ''')
 
-    connection.commit()
+    #connection.commit()
 
     cursor.execute('''
         create table routines (
@@ -53,39 +49,28 @@ def create_tables(connection):
             sets integer,
             reps integer,
             kilos integer
-
-        );
+        )
     ''')
     connection.commit()
 
 
 def initialize_tables(connection):
     cursor = connection.cursor()
-
     cursor.execute('''
         insert into users
             (username, password) values ('qwerty', '1234')
-        
         ''')
-
     cursor.execute('''
         insert into exercises
             (name, username) values ('deadlift', 'qwerty')
-        
         ''')
-    connection.commit()
-
     cursor.execute('''
         insert into exercises
             (name, username) values ('bench press', 'qwerty')
-        ;
     ''')
-    connection.commit()
-
     cursor.execute('''
         insert into exercises 
             (name, username) values ('squat', 'qwerty')
-        ;
     ''')
     connection.commit()
 

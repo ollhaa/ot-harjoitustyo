@@ -1,14 +1,12 @@
 from database_connection import get_database_connection
 from entities.user import User
 
-
 def get_user_by_row(row):
     return User(row["username"], row["password"]) if row else None
 
 
 class UserRepository:
-    """Käyttäjän tietokantaoperaatioista vastaava luokka.
-    """
+    """Käyttäjän tietokantaoperaatioista vastaava luokka."""
     def __init__(self, connection):
         """Luokan konstruktori.
         Args:
@@ -22,7 +20,7 @@ class UserRepository:
         Args:
             user: Tallennettava käyttäjä User-luokan oliona.
         Returns:
-            Tallennettu käyttäjän User-luokan oliona.
+            True
         """
         name = user.username
         password = user.password
@@ -35,7 +33,7 @@ class UserRepository:
             )
             self._connection.commit()
             return True
-        
+
         raise ValueError
 
     def delete_all_users(self):
@@ -50,7 +48,10 @@ class UserRepository:
         """Etsii käyttäjän käyttäjätiedot tietokannasta.
 
         Args: 
-            username: Etsittävän käyttäjän nimi
+            username: Kirjatuneen käyttäjän nimi
+
+        Returns:
+            Palauttaa User-luokan olion, jos ei None.
         """
         cursor = self._connection.cursor()
         cursor.execute(
@@ -58,7 +59,6 @@ class UserRepository:
             (username,))
 
         founded = cursor.fetchone()
-        print(founded)
 
         return User(founded["username"], founded["password"]) if founded else None
 
@@ -72,6 +72,5 @@ class UserRepository:
         cursor.execute("select * from users")
         rows = cursor.fetchall()
         return [User(row["username"], row["password"]) for row in rows]
-
 
 user_repository = UserRepository(get_database_connection())

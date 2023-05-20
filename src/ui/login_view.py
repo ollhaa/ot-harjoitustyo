@@ -4,22 +4,13 @@ from services.diarys_service import diarys_service, InvalidCredentialsError
 class LoginView:
     """Käyttäjän kirjautumisnäkymä."""
     def __init__(self, root, to_create_view, to_adding_view):
-        """Luokan konstruktori. Luo uuden kirjautumisnäkymän.
-        Args:
-            root:
-                TKinter, jonka sisään näkymä alustetaan.
-            handle_show_create_user_view:
-                Kutsuttava-arvo, jota kutsutaan kun siirrytään rekisteröitymisnäkymään.
-            handle_show_adding_exercise_view:
-                Kutsuttava-arvo, jota kutsutaan kun siirrytään harjoituksenlisäämisnäkymään.
-        """
         self._root = root
         self._to_create_view = to_create_view
         self._to_adding_view = to_adding_view
         self._frame = None
         self._entry_username = None
         self._entry_password = None
-        self._error_variable = None
+        self._error_message = None
         self._error_label = None
         self._initialize()
 
@@ -41,10 +32,8 @@ class LoginView:
         except ValueError:
             self._show_error("Invalid username or password")
 
-        
-
     def _show_error(self, message):
-        self._error_variable.set(message)
+        self._error_message.set(message)
         self._error_label.grid(row=8, column=0, columnspan=2)
 
     def _hide_error(self):
@@ -70,10 +59,10 @@ class LoginView:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._frame)
-        self._error_variable = StringVar(self._frame)
+        self._error_message = StringVar(self._frame)
         self._error_label = ttk.Label(
             master=self._frame,
-            textvariable=self._error_variable,
+            textvariable=self._error_message,
             foreground="red"
         )
         self._initialize_heading()
