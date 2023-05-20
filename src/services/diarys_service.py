@@ -11,12 +11,12 @@ from repositories.routine_repository import (
     routine_repository as default_routine_repository
 )
 
-class UsernameExistsError(Exception):
-    pass
+#class UsernameExistsError(Exception):
+#    pass
 
 
-class InvalidCredentialsError(Exception):
-    pass
+#class InvalidCredentialsError(Exception):
+#    pass
 
 class DiarysService:
     """Sovelluslogiikasta vastaa luokka

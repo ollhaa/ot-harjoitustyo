@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar, Toplevel, IntVar, Radiobutton
-from services.diarys_service import diarys_service, UsernameExistsError
+from services.diarys_service import diarys_service#, UsernameExistsError
 from datetime import datetime
 import pandas as pd
 
