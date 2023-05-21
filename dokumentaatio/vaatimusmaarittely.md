@@ -1,41 +1,62 @@
-# Vaatimusmäärittely
+# Vaatimusmäärittely: Gym Diaries
 ---
-*Tämä on dokumentti, jossa kuvataan lyhyesti aihe*
-
-## Sovelluksen tarkoitus
-Sovelluksen avulla käyttäjä pystyy seuraamaan omia kuntosaliharjoituksiaan. Käyttäjä voi lisätä harjoituksen ja siellä tehdyt asiat: Liikkeet, painot, sarjat ja harjoituksen koetun raskauden.
-Käyttäjä voi seurata mm. viikkovolyymia tai etsiä ennätyspainojaan harjoitushistorian perusteella. Aluksi sovelluksessa on muutama valmis liike, mutta myöhemmin saatetaan tarjota mahdollisuus lisätä omia liikeitä sekä muokata virheellisesti kirjattuja harjoituksia.
+Sovelluksen avulla voi seurata omia kuntosaliharjoituksiaan. Sovelluksessa käyttäjä voi lisätä omia liikeitään, valita sarjat, toistot, kilot sekä
+päivämäärän. Viimeisiä lisättyjä harjoitustapahtumia voi poistaa. Sovelluksen avulla voi myös seurata kuorman jakautumista eri liikkeiden välillä.
 
 ## Käyttäjät
-Samaa sovellusta on mahdollisuus käyttää useamman käyttäjän omilla tunnuksillaan. Myöhemmin voidaan lisätä joku erikoisempi toiminto, jos kirjattuja harjoituksia on yli kymmenen tms.
+Samaa sovellusta on mahdollisuus käyttää useamman käyttäjän omilla tunnuksillaan. Jokainen käyttäjä lisää omat liikeensä valikkoon ja näkee yhteenvedon vain omista harjoitustapahtumistaan.
 
-## Käyttöliittymäluonnos
-Sovellus koostuu aluksi mahdollisesti viidestä eri näkymästä:
+## Käyttöliittymä
+Sovellus koostuu viidestä eri näkymästä:
 
-1.  Rekisteröityminen - TEHTY
-2.  Kirjautuminen - TEHTY
-3.  Harjoituksen lisääminen -OSITTAIN TEHTY
-4.  Harjoitusten muokkaaminne
-5.  Yhteenveto tehdyistä harjoituksista
+1. Kirjatumisnäkymä: Käyttäjä voi kirjautua sovellukseen, jos on jo rekisteröitynyt. Aloitusnäkymä.
+2. Rekisteröitymismisnäkymä: Mikäli uudellä käyttäjällä ei vielä ole tunnuksia, niin tässä ne voi luoda.
+3. Lisäämisnäkymä: Kirjatunut käyttäjä voi valita päivämäärä, kilot ja muut, ja tämän jälkeen tallenetaa tiedot väliaikaisen näkymän kautta.
+4. Muokkaamisnäkymä: Kirjautunut käyttäjä voi poistaa yhden (korkeintaan) kymmenestä viimeisimmästä lisäämästään harjoitustapahtumasta kerrallaan.
+5. Yhteenvetonäkymä: Kirjatunut käyttäjä voi muodostaa yhteenvedon tallentamistaa harjoitustapahtumista.
 
+## Toiminnallisuudet
 
-## Perusversion toiminnallisuudet lyhyesti
+### Kirjatumisnäkymä: Aloitusnäkymä
+* Käyttäjä voi kirjautua sovellukseen, jos on jo rekisteröitynyt.
+    - Pyydetään nimeä ja salasanaa.
+    - Voi siirtymä rekisteröitymään, jos tunnuksia ei ole.
+    - Tulee lisäämisnäkymä automaattisesti, jos kirjatuminen on onnistunut
 
-### Ennen kirjautumista
-- Käyttäjä voi käyttäjätunnuksen - TEHTY
+### Rekisteröitymismisnäkymä:
+* Käyttäjä voi rekisteröityä sovellukseeen.
+    - Pyydetään nimeä ja salasanaa kahdesti.
+    - Voi siirtyä kirjatumisnäkymään, jos muistaa että tunnukset ovat olemassa.
+    - Tulee kirjatumisnäkymä automaattisesti, jos rekisteröityminen on onnistunut.
 
-### Kirjatuminen
-- Rekisteröitynyt käyttäjä voi kirjautua sisään sovellukseen - TEHTY
+### Lisäämisnäkymä:
+* Käyttäjä voi tallentaa harjoituksiaan.
+    - Voi lisätä oman kuntosaliharjoituksen listaan.
+    - Pystyy valisemaan lisätyn harjoituksen, kilot, sarjat, toistot ja päivämäärän ja lisätä tapahtuman väliaikaiseen näkymään.
+    - Voi poistaa väliaikaiseen tilaan lisätyt tiedot tai tallentaa nämä tietokantaan.
+    - Käyttäjä voi kirjatua ulos, saada ohjeita painamalla 'Help' tai siirtymä muihin näkymiin.
 
-### Kirjatumisen jälkeen
-- Käyttäjä voi lisätä oman kuntosaliharjoituksen - TEHTY
-- Käyttäjä voi seurata omia jo tehtyjä harjoituksiaan
-- Käyttäjä voi kirjatua ulos sovelluksesta - TEHTY
+### Muokkaamisnäkymä:
+* Käyttäjä voi poistaa lisäämiään harjoitustapahtumiaan.
+    - Käyttäjä saa haettua kymmenen viimeksi lisäämäänsä harjoitustapahtumaa.
+    - Voi poistaa näistä yhden kerrallaan.
+    - Käyttäjä voi kirjatua ulos, saada ohjeita painamalla 'Help' tai siirtymä muihin näkymiin.
+
+### Yhteenvetonäkymä:
+* Käyttäjä voi muodostaa yhteenvedon lisäämistään harjoitustapahtumista.
+    - Voi valita aikaväliksi tämän päivän, kuluvan kuukauden, kuluvan vuoden tai kaikki.
+    - Muodostetaan yhteenveto mm. tehdyistä harjoituksista ja nostetuista kiloista.
+    - Muodostetaan nostettujen kilojen perusteella jakaumakuva eri liikkeiden välillä.
+    - Käyttäjä voi kirjatua ulos, saada ohjeita painamalla 'Help' tai siirtymä muihin näkymiin.
+
+## Puutteita ja epäonnistumisia:
+- Ulkoasu ei täysin miellytä, esim. suhteelliset painikkeiden sijainnit yms.
+- Koodin nimeäminen olisi voinut olla vielä kuvaavampaa.
+- Joitakin luokkia olisi voinut jakaa kahdeksi saadun palautteen perusteella.
+- Salasanat pitäisi tallentaa salattuna tietokantaan.
 
 ## Jatkokehitysideoita
-Perusversion jälkeen, ajan salliessa sovellusta saateteaan laajentaa esim. seuraavilla toiminnoilla:
-- Käyttäjä voi muokata virheellisesti kirjattuja harjoituksia
-- Käyttäjä voi lisätä sovelluskeen valmiiden liikkeiden lisäksi omia erikoisempia liikkeitä
-- Käyttäjä voi poistaa vahingossa kirjattuja harjoituksia
-- Käyttäjä voi luoda samalla tunnuksella useamman harjoituspäiväkirjan erilaisia projekteja varten
-
+- Harjoitusten (liikkeet poistaminen) valikosta.
+- Harjoitustapahtumien poistamisen sijaan esim. päivämäärän muokkaaminen.
+- Yhteenvetonäkymä mahdollistaisi todella paljon enemmän erilaista analyysia harjoitustapahtumista. Esim. viikkoatason rasitus yli ajan.
+- Käyttäjä voi luoda samalla tunnuksella useamman harjoituspäiväkirjan erilaisia projekteja varten.
