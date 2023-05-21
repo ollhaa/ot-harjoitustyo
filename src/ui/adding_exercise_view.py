@@ -49,16 +49,17 @@ class AddingExerciseView:
         self._selected_date.config(text= self._calender.get_date())
 
     def _add_to_alternatives(self):
-        new = self._new.get()
         try:
-            if new is not None:
+            new = self._new.get()
+            new = new.strip()
+            if new is not None and len(new) >0:
                 alt = new.lower()
                 exists_alt = diarys_service.find_all_exercises()
                 exists_alt = [x.name for x in exists_alt]
                 if alt not in exists_alt:
                     diarys_service.add_new_exercise(alt)
         except ValueError:
-            self._show_error("Added already!")
+            self._show_error("Added already or..!")
         self._new = None
         self._initialize_options()
 

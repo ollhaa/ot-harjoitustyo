@@ -78,6 +78,7 @@ class AnalyticsView:
 
             figure = plt.Figure(figsize=(3,3), dpi=100)
             plt.pie(sizes, labels=labels)
+            plt.title("The dist. of lifted weights between exercises")
             
             self._initialize_other()
             plt.show()
