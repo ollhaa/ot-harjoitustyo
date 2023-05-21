@@ -1,4 +1,4 @@
-# Ohjelmistotekniikka, Gym Diaries
+# Ohjelmistotekniikka: Gym Diaries
 Sovelluksen avulla voi seurata omia kuntosaliharjoituksiaan. Sovelluksessa käyttäjä voi lisätä omia liikeitään, valita sarjat, toistot, kilot sekä päivämäärän. Viimeisiä lisättyjä harjoitustapahtumia voi poistaa. Sovelluksen avulla voi myös seurata kuorman jakautumista eri liikkeiden välillä.
 
 ## Dokumentit
