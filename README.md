@@ -14,7 +14,7 @@ Harjoitustyö käsittelee kuntosaliharjoitusten seuraamiseen liittyvää sovellu
 
 ## Huomioita
 
-Vaatimuksina on `Python 3.8` tai uudempi ja `poetry 1.2.2` tai uudempi
+Vaatimuksina on `Python 3.8` tai uudempi ja `poetry 1.5.0` tai uudempi
 
 ## Käyttäminen
 

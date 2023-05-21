@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar, Toplevel, IntVar, Radiobutton
-from services.diarys_service import diarys_service#, UsernameExistsError
+from services.diarys_service import diarys_service
 from datetime import datetime
 import pandas as pd
 
@@ -75,7 +75,6 @@ class EditView:
         ttk.Label(top, text=
         "Select one of the following:\n"
             "\t*Last 10 \n"
-            "\t*All \n"
         "\n"
         "Then press 'Find'. You can delete routines by selecting the routine then pressing 'Delete'. \n"
         "You can also go Analytics view ('ANALYTICS?) or to other frames.\n"
@@ -101,9 +100,6 @@ class EditView:
         self._error_label.grid(padx=5, pady=5)
 
         self._hide_error()
-
-
-        #self._initialize_other()
     
     def _initialize_logout_button(self):
         logout_button = ttk.Button(

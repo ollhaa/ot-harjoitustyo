@@ -11,14 +11,11 @@ class TestExcerciseRepository(unittest.TestCase):
         self.exr_eka = Exercise("Mave")
         self.exr_toka = Exercise('Penkki')
 
-
     def test_create_base(self):
         self.assertEqual(self.exr_eka.name, "Mave")
         name = self.exr_toka.get_name()
         self.assertEqual(name, "Penkki")
 
-
-        
     def test_find_all_exercises(self):
         exrs = exercise_repository.find_all_exercises("qwerty")
         self.assertEqual(len(exrs), 3)

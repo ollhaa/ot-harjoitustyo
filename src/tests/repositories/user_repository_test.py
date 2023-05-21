@@ -3,7 +3,6 @@ from repositories.user_repository import user_repository
 from entities.user import User
 from initialize_database import initialize_database
 
-
 class TestUserRepository(unittest.TestCase):
     def setUp(self):
         initialize_database()

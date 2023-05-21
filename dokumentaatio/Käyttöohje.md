@@ -24,7 +24,9 @@ Suorita komento `poetry run invoke lint`
 
 ## Sovelluksen käyttäminen
 Sovelluksen painikkeet, virheilmoitukset ja erityisesti ikkuna `HELP` pyrkivät ohjaamaan käyttäjää. 
-Ylhäällä näkyvät `LOGOUT`, `ADD?`, `EDIT?`, `ANALYTICS` ovat näkymiä joihin voit siirtyä, kun olet kirjatunut.
+Ylhäällä näkyvät `LOGOUT`, `ADD?`, `EDIT?`, `ANALYTICS?` ovat näkymiä joihin voit siirtyä, kun olet kirjatunut.
+
+Alustuksen yhteydessä luodaan mallikäyttäjä, jonka nimi on "qwerty" ja salasana "1234". Sovellusta voi kokeilla tällä tavalla.
 
 ### Kirjatumismisnäkymä:
 - Anna nimi ja salasana ja paina `Log In`.

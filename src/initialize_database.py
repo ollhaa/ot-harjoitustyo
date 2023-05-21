@@ -6,11 +6,11 @@ def drop_tables(connection):
     cursor.execute('''
         drop table if exists users;
     ''')
-    #connection.commit()
+
     cursor.execute('''
         drop table if exists exercises;
         ''')
-    #connection.commit()
+
     cursor.execute('''
         drop table if exists routines;
         ''')
@@ -28,7 +28,6 @@ def create_tables(connection):
             created timestamp
         )
     ''')
-    #connection.commit()
 
     cursor.execute('''
         create table exercises (
@@ -37,8 +36,6 @@ def create_tables(connection):
             username text
         )
     ''')
-
-    #connection.commit()
 
     cursor.execute('''
         create table routines (
@@ -52,7 +49,6 @@ def create_tables(connection):
         )
     ''')
     connection.commit()
-
 
 def initialize_tables(connection):
     cursor = connection.cursor()
@@ -76,7 +72,6 @@ def initialize_tables(connection):
 
 def initialize_database():
     connection = get_database_connection()
-
     drop_tables(connection)
     create_tables(connection)
     initialize_tables(connection)

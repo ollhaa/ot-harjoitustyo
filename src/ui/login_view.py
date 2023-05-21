@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar
-from services.diarys_service import diarys_service#, InvalidCredentialsError
+from services.diarys_service import diarys_service
 
 class LoginView:
     """Käyttäjän kirjautumisnäkymä."""

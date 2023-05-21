@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar, Toplevel, IntVar, Radiobutton
-from services.diarys_service import diarys_service#, UsernameExistsError
+from services.diarys_service import diarys_service
 from datetime import datetime
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -140,7 +140,6 @@ class AnalyticsView:
         edit_view_button = ttk.Button(
             master=self._frame,
             text="EDIT?",
-            #bg ="red"
             command=self._to_edit_view
         )
 
