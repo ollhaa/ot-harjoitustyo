@@ -3,7 +3,7 @@ Sovelluksen avulla voi seurata omia kuntosaliharjoituksiaan. Sovelluksessa käyt
 
 Huomaa, että voit halutessasi kokeilla sovellusta lataamisen ja asennuksen jälkeen testitunnuksilla:
 
-username: qwerty
+username: qwerty \
 password: 1234
 
 ## Dokumentit
