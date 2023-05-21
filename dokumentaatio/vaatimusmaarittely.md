@@ -9,11 +9,11 @@ Samaa sovellusta on mahdollisuus käyttää useamman käyttäjän omilla tunnuks
 ## Käyttöliittymä
 Sovellus koostuu viidestä eri näkymästä:
 
-1. Kirjatumisnäkymä: Käyttäjä voi kirjautua sovellukseen, jos on jo rekisteröitynyt. Aloitusnäkymä.
-2. Rekisteröitymismisnäkymä: Mikäli uudellä käyttäjällä ei vielä ole tunnuksia, niin tässä ne voi luoda.
-3. Lisäämisnäkymä: Kirjatunut käyttäjä voi valita päivämäärä, kilot ja muut, ja tämän jälkeen tallenetaa tiedot väliaikaisen näkymän kautta.
-4. Muokkaamisnäkymä: Kirjautunut käyttäjä voi poistaa yhden (korkeintaan) kymmenestä viimeisimmästä lisäämästään harjoitustapahtumasta kerrallaan.
-5. Yhteenvetonäkymä: Kirjatunut käyttäjä voi muodostaa yhteenvedon tallentamistaa harjoitustapahtumista.
+1. `Kirjatumisnäkymä` Käyttäjä voi kirjautua sovellukseen, jos on jo rekisteröitynyt. Aloitusnäkymä.
+2. `Rekisteröitymismisnäkymä` Mikäli uudellä käyttäjällä ei vielä ole tunnuksia, niin tässä ne voi luoda.
+3. `Lisäämisnäkymä` Kirjatunut käyttäjä voi valita päivämäärä, kilot ja muut, ja tämän jälkeen tallenetaa tiedot väliaikaisen näkymän kautta.
+4. `Muokkaamisnäkymä` Kirjautunut käyttäjä voi poistaa yhden (korkeintaan) kymmenestä viimeisimmästä lisäämästään harjoitustapahtumasta kerrallaan.
+5. `Yhteenvetonäkymä` Kirjatunut käyttäjä voi muodostaa yhteenvedon tallentamistaa harjoitustapahtumista.
 
 ## Toiminnallisuudet
 
@@ -54,6 +54,7 @@ Sovellus koostuu viidestä eri näkymästä:
 - Koodin nimeäminen olisi voinut olla vielä kuvaavampaa.
 - Joitakin luokkia olisi voinut jakaa kahdeksi saadun palautteen perusteella.
 - Salasanat pitäisi tallentaa salattuna tietokantaan.
+- Testitietokannan kanssa ongelmia.
 
 ## Jatkokehitysideoita
 - Harjoitusten (liikkeet poistaminen) valikosta.
