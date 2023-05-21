@@ -26,7 +26,7 @@ Tarkemmin käyttämisestä ja toiminnoista dokumentissa `Käyttöohje`
 
 ### Asennus
 
-Lataa ``Final Release Linkki uusimpaan löytyy hieman ylempää kohdasta Dokumentit.
+Lataa `Final Release` Linkki uusimpaan löytyy hieman ylempää kohdasta Dokumentit.
 
 Suorita `poetry install` hakemistossa ot-harjoitustyo.
 
@@ -44,7 +44,7 @@ Testit voidaan suorittaa komennolla:
 Testiraportin saa komennolla:
 `poetry run invoke coverage-report`
 
-Testiraportin löydät htmlcov-hakemista.
+Testiraportin löydät htmlcov-hakemistosta.
 
 Pylint voidaan suorittaa komennolla:
 `poetry run invoke lint`
