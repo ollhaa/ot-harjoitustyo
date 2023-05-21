@@ -27,12 +27,12 @@ Sovelluksen painikkeet, virheilmoitukset ja erityisesti ikkuna `HELP` pyrkivät 
 Ylhäällä näkyvät `LOGOUT`, `ADD?`, `EDIT?`, `ANALYTICS` ovat näkymiä joihin voit siirtyä, kun olet kirjatunut.
 
 ### Kirjatumismisnäkymä:
-    - Anna nimi ja salasana ja paina `Log In`.
-    - Siirry rekisteröitymään, jos tunnuksia ei ole painamalla `I do not have an account yet`
+- Anna nimi ja salasana ja paina `Log In`.
+- Siirry rekisteröitymään, jos tunnuksia ei ole painamalla `I do not have an account yet`
 
 ### Rekisteröitymismisnäkymä:
-    - Anna haluamasi nimi ja keksimäsi salasana kahdesti. Paina `Register`
-    - Tai siirry takaisin kirjatumisnäkymään painamalla `I already have an account` 
+- Anna haluamasi nimi ja keksimäsi salasana kahdesti. Paina `Register`
+- Tai siirry takaisin kirjatumisnäkymään painamalla `I already have an account` 
 
 ### Lisäämisnäkymä:
 * Oman harjoituksen lisääminen
@@ -45,8 +45,8 @@ Ylhäällä näkyvät `LOGOUT`, `ADD?`, `EDIT?`, `ANALYTICS` ovat näkymiä joih
     - Nyt voit joko poistaa lisäämäsi painalalla `Delete added` tai tallentaa ne `Save the routine` 
 
 ### Muokkaamisnäkymä:
-    - Hae kymmentä (jos näitä on - et voi hakea tapahtumia, jos olet lisännyt vain yhden) viimeksi lisäämääsi harjoitustapahtumaa painamalla `Find`
-    - Poista näistä yksi kerrallaan valitsemalla tämä ja painamalla `Delete`
+- Hae kymmentä (jos näitä on - et voi hakea tapahtumia, jos olet lisännyt vain yhden) viimeksi lisäämääsi harjoitustapahtumaa painamalla `Find`
+- Poista näistä yksi kerrallaan valitsemalla tämä ja painamalla `Delete`
 
 ### Yhteenvetonäkymä:
-    - Valitse Today/This Month/This Year/All ja paina `Get stats`
+- Valitse Today/This Month/This Year/All ja paina `Get stats`
