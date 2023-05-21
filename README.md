@@ -1,6 +1,11 @@
 # Ohjelmistotekniikka: Gym Diaries
 Sovelluksen avulla voi seurata omia kuntosaliharjoituksiaan. Sovelluksessa käyttäjä voi lisätä omia liikeitään, valita sarjat, toistot, kilot sekä päivämäärän. Viimeisiä lisättyjä harjoitustapahtumia voi poistaa. Sovelluksen avulla voi myös seurata kuorman jakautumista eri liikkeiden välillä.
 
+Huomaa, että voit halutessasi kokeilla sovellusta lataamisen ja asennuksen jälkeen testitunnuksilla:
+
+username: qwerty
+password: 1234
+
 ## Dokumentit
 
 [Määrittelydokumentti](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md) \
@@ -21,6 +26,8 @@ Tarkemmin käyttämisestä `Käyttöohjeessa`
 
 ### Asennus
 
+Lataa uusin release: Linkki uusimpaan löytyy hieman ylempää kohdasta Dokumentit.
+
 Suorita `poetry install` hakemistossa ot-harjoitustyo.
 
 Alustustoimenpiteet `poetry run invoke build`
@@ -36,6 +43,8 @@ Testit voidaan suorittaa komennolla:
 
 Testiraportin saa komennolla:
 `poetry run invoke coverage-report`
+
+Testiraportin löydät htmlcov-hakemista.
 
 Pylint voidaan suorittaa komennolla:
 `poetry run invoke lint`
