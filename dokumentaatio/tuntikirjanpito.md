@@ -26,4 +26,16 @@
 |29.4.2023  |4     | Uudet painikkeet tuleviin näkymiin ja HELP?-ikkuna yhteen näkymään                                                  |
 |1.5.2023   |4     | Harjoitusten valinnat harjoitustapahtumaan                                                                          |
 |2.5.2023   |5     | Harjoitustapahtuman tallennus tietokantaan toimii, muutama testi ja docstring                                       |
-|Tunnit     |70    | Yhteensä                                                                                                            |
+|3.5.2023   |2     | Harjoitusten yhteenveto ja Pandas + Matplotlib testailua                                                            |
+|5.5.2023   |2     | Harjoitusten yhteenveto: tiedon hakeminen loppuun                                                                   |
+|6.5.2023   |2     | Harjoitusten yhteenveto näkymä: testailua                                                                           |
+|7.5.2023   |3     | Koodin siistimistä ja liikkumista eri näkymien välillä                                                              |
+|8.5.2023   |2     | Nimeämisten tarkastelua ja testailua                                                                                |
+|14.5.2023  |2     | Editointinäkymän suunnittelua ja jotain sälää                                                                       |
+|15.5.2023  |2     | Editointinäkymän aloittamista                                                                                       |
+|16.5.2023  |2     | Editointinäkymän jatkoa ja muokkaamista                                                                             |
+|18.5.2023  |6     | Editointinäkymä loppuun + virheet                                                                                   |
+|19.5.2023  |6     | Sovelluksen koodin siistimistä ja manuaalista testailua + virheet                                                   |
+|20.5.2023  |8     | Testausta ja koodin siistimistä                                                                                     |
+|21.5.2023  |8     | Dokumentit kuntoon                                                                                                  |
+|YHTEENSÄ   |113   |                                                                                                                     |
