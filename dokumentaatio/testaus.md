@@ -22,6 +22,8 @@ Järjestelmätason testausta tehty manuaalisesti.
 
 Kattavuus 86 % testatuissa luokissa. Testiraportin ulkopuolella mm. ui, initialize_databe.py, config.py ja index.py.
 
+![Coverage](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/testikattavuus.png)
+
 ### Pylint
 
 Koodin laatu 10.00/10.00
