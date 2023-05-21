@@ -53,9 +53,5 @@ Sovelluksen toiminnallisuuksia on käsitelty käyttöohjeessa melko kattavasti. 
 
 Kun käyttäjä on syöttänyt oman uuden käyttäjänimensä ja salasanansa (kahteen kertaan tarkastuksen kanssa),ja pituudet yms. ovat sallittuja, ja painaa tämän jälkeen 
 "Register", niin tapahtuu seuraavasti:
-
-
-### Kirjautuminen sisään 
-
-Kun käyttäjä on syöttänyt jo olemassa olevan käyttäjänimen ja salasanan, ja painaa "Log In", niin tapahtuu seuraavaa:
+![Käyttäjän luominen](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/sekvenssikaavio.png)
 
