@@ -69,7 +69,7 @@ class EditView:
 
     def _open_popup(self):
         top= Toplevel(self._frame)
-        top.geometry("585x120")
+        top.geometry("585x110")
         top.resizable(0, 0)
         top.title("Help: Edit exercise")
         ttk.Label(top, text=
