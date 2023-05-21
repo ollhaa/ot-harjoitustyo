@@ -14,7 +14,7 @@ password: 1234
 [Testausdokumentti](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md) \
 [Tuntikirjanpito](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md) \
 [Changelog](https://github.com/ollhaa/ot-harjoitustyo/blob/master/dokumentaatio/changelog.md) \
-[Viikon 6 Release](https://github.com/ollhaa/ot-harjoitustyo/releases/tag/viikko6)
+[Final Release](https://github.com/ollhaa/ot-harjoitustyo/releases/tag/Final)
 
 ## Huomioita
 
@@ -22,11 +22,11 @@ Vaatimuksina on `Python 3.8` tai uudempi ja `poetry 1.5.0` tai uudempi
 
 ## Ohjeet lyhyesti
 
-Tarkemmin käyttämisestä `Käyttöohjeessa`
+Tarkemmin käyttämisestä ja toiminnoista dokumentissa `Käyttöohje`
 
 ### Asennus
 
-Lataa uusin release: Linkki uusimpaan löytyy hieman ylempää kohdasta Dokumentit.
+Lataa ``Final Release Linkki uusimpaan löytyy hieman ylempää kohdasta Dokumentit.
 
 Suorita `poetry install` hakemistossa ot-harjoitustyo.
 
