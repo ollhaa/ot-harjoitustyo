@@ -46,3 +46,16 @@ Tietokanta alustetaan komennolla `poetry run invoke build` ja konfiguraatiotiedo
 Testaamisesta varten käytetään (tässä ongelmia) testitietokantaa.
 
 ## Toiminta
+
+Sovelluksen toiminnallisuuksia on käsitelty käyttöohjeessa melko kattavasti. Alla käsitellään esimerkinomaisesti joitakin toimintoja sekvenssikaavion avulla.
+
+### Uuden käyttäjän luominen
+
+Kun käyttäjä on syöttänyt oman uuden käyttäjänimensä ja salasanansa (kahteen kertaan tarkastuksen kanssa),ja pituudet yms. ovat sallittuja, ja painaa tämän jälkeen 
+"Register", niin tapahtuu seuraavasti:
+
+
+### Kirjautuminen sisään 
+
+Kun käyttäjä on syöttänyt jo olemassa olevan käyttäjänimen ja salasanan, ja painaa "Log In", niin tapahtuu seuraavaa:
+
